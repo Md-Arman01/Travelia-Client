@@ -1,65 +1,31 @@
-import { NavLink } from "react-router-dom";
 import logo from "../../public/Tourist Guide Logo.png";
 import Container from "./Container";
 import { FiMenu } from "react-icons/fi";
+import MenuItems from "./MenuItems";
+import useAuth from "../Hooks/useAuth";
+import { NavLink } from "react-router-dom";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 
 const Navber = () => {
+  const { user , logoutUser, setUser } = useAuth();
+  const { displayName, photoURL, email } = user || {};
+  const menuItems = <MenuItems></MenuItems>;
+  console.log(user);
 
-
-  const menuItems = (
-    <>
-      <div className="flex gap-5 items-center">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#EB3951] underline underline-offset-8 text-lg"
-              : "text-lg  hover:text-[#EB3951] hover:underline hover:underline-offset-8"
-          }>
-          Home
-        </NavLink>
-        <NavLink
-          to="/community"
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#EB3951] underline underline-offset-8 text-lg"
-              : "text-lg  hover:text-[#EB3951] hover:underline hover:underline-offset-8"
-          }>
-          Community
-        </NavLink>
-        <NavLink
-          to="/blogs"
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#EB3951] underline underline-offset-8 text-lg"
-              : "text-lg  hover:text-[#EB3951] hover:underline hover:underline-offset-8"
-          }>
-          Blogs
-        </NavLink>
-        <NavLink
-          to="/about"
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#EB3951] underline underline-offset-8 text-lg"
-              : "text-lg  hover:text-[#EB3951] hover:underline hover:underline-offset-8"
-          }>
-          About Us
-        </NavLink>
-        <NavLink
-          to="/contact"
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#EB3951] underline underline-offset-8 text-lg"
-              : "text-lg hover:text-[#EB3951] hover:underline hover:underline-offset-8"
-          }>
-          Contact Us
-        </NavLink>
-      </div>
-    </>
-  );
+    const handleLogout = ()=>{
+        logoutUser()
+        .then(() => {
+            // Sign-out successful.
+            setUser()
+            console.log('sign-out successful')
+          }).catch((error) => {
+            console.log(error)
+            // An error happened.
+          });
+    }
 
   return (
-    <div className=" sticky top-0 inset-0 z-10 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
+    <div className=" sticky top-0 inset-0 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
       {/* ----------- */}
       <Container>
         <div className="navbar">
@@ -87,7 +53,44 @@ const Navber = () => {
               <div>{menuItems}</div>
             </ul>
           </div>
-          
+          <div className="navbar-end gap-2">
+            {user ? (
+              <div>
+                <div className="dropdown dropdown-end">
+                  <label tabIndex={0}>
+                    <div className="avatar online">
+                      <div className="w-12 rounded-full">
+                        <img src={photoURL} />
+                      </div>
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-[1] menu p-5 text-center shadow bg-base-100 rounded-box min-w-[250px] space-y-3">
+                    <div>
+                      <h1 className="text-lg py-2">{displayName}</h1>
+                      <h1 className="text-xs pb-2">{email}</h1>
+                      <hr />
+                    </div>
+                    <div
+                      onClick={handleLogout}
+                      className="flex items-center justify-center gap-2 text-lg text-red-400 hover:text-red-500 hover:cursor-pointer">
+                      <p>logout</p>
+                      <FaArrowRightToBracket></FaArrowRightToBracket>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <NavLink to="/signIn">
+                <button
+                  className="hover:translate-y-1  block w-full select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-1 px-8 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                  data-ripple-light="true">
+                  Sign In
+                </button>
+              </NavLink>
+            )}
+          </div>
         </div>
       </Container>
     </div>
