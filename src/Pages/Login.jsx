@@ -4,6 +4,7 @@ import Container from "../Component/Container";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import GoogleSignIn from "../Component/GoogleSignIn";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { loginUser } = useAuth();
@@ -14,18 +15,21 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
+    const toastId = toast.loading("Sign In...");
+
     const email = data?.email;
     const password = data?.password;
     loginUser(email, password)
       .then((userCredential) => {
+        toast.success("Sign In Successfully!", { id: toastId });
         const user = userCredential.user;
         navigate("/");
         console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode);
+        toast.error( errorCode , {id: toastId})
       });
   };
 

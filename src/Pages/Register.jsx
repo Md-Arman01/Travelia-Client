@@ -23,7 +23,7 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const toastId = toast.loading("Registering...");
+    const toastId = toast.loading("Sign Up...");
 
     const name = data?.name;
     const email = data?.email;
@@ -38,7 +38,7 @@ const Register = () => {
     console.log(name, email, password, image);
     createUser(email, password)
       .then((result) => {
-        toast.success("Register Successfully!", { id: toastId });
+        toast.success("Sign Up Successfully!", { id: toastId });
         navigate("/");
         console.log(result.user);
 
@@ -62,8 +62,8 @@ const Register = () => {
           });
       })
       .catch((error) => {
-        toast.error(error.code, { id: toastId });
-        console.log(error.message);
+        const errorCode = error.code;
+        toast.error( errorCode , {id: toastId})
       });
   };
 
@@ -160,7 +160,7 @@ const Register = () => {
                       data-ripple-dark="true">
                       <input
                         type="checkbox"
-                        onChange={() => setDisable(false)}
+                        onChange={() => setDisable(!disable)}
                         className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity  hover:before:opacity-10"
                         id="checkbox"
                       />

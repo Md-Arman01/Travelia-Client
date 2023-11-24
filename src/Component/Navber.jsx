@@ -5,30 +5,33 @@ import MenuItems from "./MenuItems";
 import useAuth from "../Hooks/useAuth";
 import { NavLink } from "react-router-dom";
 import { FaArrowRightToBracket } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 const Navber = () => {
-  const { user , logoutUser, setUser } = useAuth();
+  const { user, logoutUser, setUser } = useAuth();
   const { displayName, photoURL, email } = user || {};
   const menuItems = <MenuItems></MenuItems>;
   console.log(user);
 
-    const handleLogout = ()=>{
-        logoutUser()
-        .then(() => {
-            // Sign-out successful.
-            setUser()
-            console.log('sign-out successful')
-          }).catch((error) => {
-            console.log(error)
-            // An error happened.
-          });
-    }
+  const handleLogout = () => {
+    const toastId = toast.loading('Sign Outing...')
+    logoutUser()
+      .then(() => {
+        // Sign-out successful.
+        setUser();
+        toast.success('Sign Out Successfully!', { id: toastId })
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        toast.error( errorCode , {id: toastId})
+      });
+  };
 
   return (
-    <div className=" sticky top-0 inset-0 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
+    <div className="inset-0 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
       {/* ----------- */}
       <Container>
-        <div className="navbar">
+        <div className="navbar sticky top-0 ">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">

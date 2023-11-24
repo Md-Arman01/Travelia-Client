@@ -1,12 +1,18 @@
+
+import Banner from "../Component/Banner/Banner";
 import Container from "../Component/Container";
+import TravelGuide from "../Component/TravelGuide/TravelGuide";
 
 const Home = () => {
+    
+    
   return (
-    <Container>
-      <div>
-        <h1>this is home page</h1>
-      </div>
-    </Container>
+    <>
+      <Banner></Banner>
+      <Container>
+        <TravelGuide></TravelGuide>
+      </Container>
+    </>
   );
 };
 
