@@ -35,7 +35,7 @@ const Register = () => {
       },
     });
     const image = res?.data?.data?.display_url;
-    console.log(name, email, password, image);
+    
     createUser(email, password)
       .then((result) => {
         toast.success("Sign Up Successfully!", { id: toastId });

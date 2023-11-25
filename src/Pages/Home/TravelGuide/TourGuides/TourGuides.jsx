@@ -12,7 +12,6 @@ const TourGuides = () => {
     },
   });
 
-  console.log(allTourGuides);
 
   return (
     <div className="overflow-x-auto">
@@ -58,7 +57,7 @@ const TourGuides = () => {
                 <h1 className="text-gray-500">{tourGuide?.provider_email}</h1>
               </td>
               <td>
-                <h1 className="text-gray-500">{tourGuide?.phone_number}</h1>
+                <h1 className="text-gray-500">+{tourGuide?.phone_number}</h1>
               </td>
               <th >
                 <button

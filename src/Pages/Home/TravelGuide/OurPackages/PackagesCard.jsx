@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+
 
 const PackagesCard = ({ packageInfo }) => {
   const {user} = useAuth()
@@ -8,7 +11,8 @@ const PackagesCard = ({ packageInfo }) => {
   const { about, image, price, tour_type, trip_title, _id } = packageInfo || {};
 
   const handleWishlist = (id)=>{
-    console.log('clicked', id)
+    const toastId = toast.loading("Wishlist Adding...");
+
     const wishlistData = {
         user_name: user?.displayName,
         user_email: user?.email,
@@ -19,10 +23,12 @@ const PackagesCard = ({ packageInfo }) => {
     }
     axiosSecure.post('/wishlist', wishlistData )
     .then(res => {
-        console.log(res)
+      if(res?.status === 200){
+        toast.success("Wishlist Added!", { id: toastId });
+    }
     })
-
   }
+
 
   return (
     <div className="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg ">
@@ -61,12 +67,14 @@ const PackagesCard = ({ packageInfo }) => {
         <p className="text-lg font-semibold">Price: ${price}</p>
       </div>
       <div className="p-6 pt-3">
+        <Link to={`/packageDetails/${_id}`}>
         <button
           className="block w-full select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] bg-clip-border hover:rounded-3xl normal-case  hover:scale-110 py-3.5 px-7 text-center align-middle  text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
           data-ripple-light="true">
           View Package
         </button>
+        </Link>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PackageDetails from "../Pages/Home/TravelGuide/OurPackages/PackgeDetails.jsx/PackageDetails";
 
 const Router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const Router = createBrowserRouter([
       {
         path: "/signUp",
         element: <Register></Register>,
+      },
+      {
+        path: "/packageDetails/:id",
+        element: <PackageDetails></PackageDetails>
       },
     ],
   },
