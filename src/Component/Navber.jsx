@@ -11,7 +11,7 @@ const Navber = () => {
   const { user, logoutUser, setUser } = useAuth();
   const { displayName, photoURL, email } = user || {};
   const menuItems = <MenuItems></MenuItems>;
-  console.log(user);
+  
 
   const handleLogout = () => {
     const toastId = toast.loading('Sign Outing...')
@@ -28,10 +28,10 @@ const Navber = () => {
   };
 
   return (
-    <div className="inset-0 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
+    <div className="sticky top-0 inset-0 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
       {/* ----------- */}
       <Container>
-        <div className="navbar sticky top-0 ">
+        <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
