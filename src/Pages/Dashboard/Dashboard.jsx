@@ -8,9 +8,6 @@ import useUserInfo from "../../Hooks/useUserInfo";
 
 const Dashboard = () => {
     const [userInfo] = useUserInfo()
-    console.log(userInfo)
-
-
 
 
   return (
@@ -33,7 +30,7 @@ const Dashboard = () => {
 
           </div>
           {/* dashboard child */}
-          <div className="p-10 ">
+          <div className="p-10 flex-1">
             <Outlet></Outlet>
           </div>
         </div>

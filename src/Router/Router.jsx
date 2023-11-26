@@ -68,7 +68,7 @@ const Router = createBrowserRouter([
         children:[
           {
             path: '/dashboard/touristProfile',
-            element: <Profile></Profile>
+            element: <PrivateRoute><Profile></Profile></PrivateRoute>
           },
           {
             path: '/dashboard/bookings',
@@ -80,7 +80,7 @@ const Router = createBrowserRouter([
           },
           {
             path: '/dashboard/tourGuideProfile',
-            element: <TourGuideProfile></TourGuideProfile>
+            element: <PrivateRoute><TourGuideProfile></TourGuideProfile></PrivateRoute>
           },
           {
             path: '/dashboard/tourGuideAssigned',
@@ -88,7 +88,7 @@ const Router = createBrowserRouter([
           },
           {
             path: '/dashboard/adminProfile',
-            element: <AdminProfile></AdminProfile>
+            element: <PrivateRoute><AdminProfile></AdminProfile></PrivateRoute>
           },
           {
             path: '/dashboard/addPackage',
