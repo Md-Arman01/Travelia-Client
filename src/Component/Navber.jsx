@@ -6,9 +6,11 @@ import useAuth from "../Hooks/useAuth";
 import { Link, NavLink } from "react-router-dom";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import useUserInfo from "../Hooks/useUserInfo";
 
 const Navber = () => {
   const { user, logoutUser, setUser } = useAuth();
+  const [userInfo] = useUserInfo()
   const { displayName, photoURL, email } = user || {};
   const menuItems = <MenuItems></MenuItems>;
   
@@ -76,9 +78,24 @@ const Navber = () => {
                       <hr />
                     </div>
                     <div>
-                      <Link to='/dashboard'>
-                         <h1 className="text-base font-medium hover:cursor-pointer">Dashboard</h1>
-                      </Link>
+                      {
+                        user && userInfo?.role === 'Tourist' && 
+                              <Link to='/dashboard/touristProfile'>
+                                <h1 className="text-base font-medium hover:cursor-pointer">Dashboard</h1>
+                              </Link>
+                      }
+                      {
+                        user && userInfo?.role === 'Tour Guide' &&
+                        <Link to='/dashboard/tourGuideProfile'>
+                        <h1 className="text-base font-medium hover:cursor-pointer">Dashboard</h1>
+                        </Link>
+                      }
+                      {
+                        user && userInfo?.role === 'Admin' &&
+                        <Link to='/dashboard/adminProfile'>
+                        <h1 className="text-base font-medium hover:cursor-pointer">Dashboard</h1>
+                        </Link>
+                      }
                     </div>
                     <div
                       onClick={handleLogout}
