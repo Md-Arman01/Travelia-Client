@@ -61,7 +61,7 @@ const PackagesCard = ({ packageInfo }) => {
           {trip_title} <span className="text-sm">({tour_type})</span>
         </h5>
 
-        <p className="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
+        <p className="block font-sans text-base antialiased font-light leading-relaxed text-gray-700 min-h-[82px]">
           {about?.slice(0, 100)}...
         </p>
         <p className="text-lg font-semibold">Price: ${price}</p>

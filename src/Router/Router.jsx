@@ -72,11 +72,11 @@ const Router = createBrowserRouter([
           },
           {
             path: '/dashboard/bookings',
-            element: <Booking></Booking>
+            element: <PrivateRoute><Booking></Booking></PrivateRoute>
           },
           {
             path: '/dashboard/wishlist',
-            element: <Wishlist></Wishlist>
+            element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
           },
           {
             path: '/dashboard/tourGuideProfile',
@@ -84,7 +84,7 @@ const Router = createBrowserRouter([
           },
           {
             path: '/dashboard/tourGuideAssigned',
-            element: <TourGuideAssigned></TourGuideAssigned>
+            element: <PrivateRoute><TourGuideAssigned></TourGuideAssigned></PrivateRoute>
           },
           {
             path: '/dashboard/adminProfile',
@@ -92,11 +92,11 @@ const Router = createBrowserRouter([
           },
           {
             path: '/dashboard/addPackage',
-            element: <AddPackage></AddPackage>
+            element: <PrivateRoute><AddPackage></AddPackage></PrivateRoute>
           },
           {
             path: '/dashboard/manageUser',
-            element: <ManageUser></ManageUser>
+            element: <PrivateRoute><ManageUser></ManageUser></PrivateRoute>
           },
         ]
       }
