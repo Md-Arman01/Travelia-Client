@@ -19,6 +19,7 @@ import TourGuideAssigned from "../Pages/Dashboard/TourGuideSection/TourGuideAssi
 import AdminProfile from "../Pages/Dashboard/AdminSection/AdminProfile";
 import AddPackage from "../Pages/Dashboard/AdminSection/AddPackage";
 import ManageUser from "../Pages/Dashboard/AdminSection/ManageUser";
+import AllPackages from "../Pages/AllPackages/AllPackages";
 
 
 const Router = createBrowserRouter([
@@ -57,6 +58,10 @@ const Router = createBrowserRouter([
       {
         path: "/packageDetails/:id",
         element: <PackageDetails></PackageDetails>
+      },
+      {
+        path: "/allPackages",
+        element: <AllPackages></AllPackages>
       },
       {
         path: "/tourGuideProfile/:id",

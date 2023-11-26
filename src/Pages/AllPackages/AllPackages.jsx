@@ -1,0 +1,28 @@
+import Container from "../../Component/Container";
+import useAllPackages from "../../Hooks/useAllPackages";
+import PackagesCard from "../Home/TravelGuide/OurPackages/PackagesCard";
+
+const AllPackages = () => {
+    const [packages] = useAllPackages()
+    console.log(packages)
+
+
+  return (
+    <div  className="my-10">
+      <Container>
+        <div>
+          <h1 className="text-center my-10 text-5xl font-semibold font-Rancho">
+            All Packages
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {
+                packages?.map(packageInfo => <PackagesCard key={packageInfo?._id} packageInfo={packageInfo}></PackagesCard>)
+            }
+          </div>
+        </div>
+      </Container>
+    </div>
+  );
+};
+
+export default AllPackages;

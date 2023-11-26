@@ -11,6 +11,7 @@ const PackagesCard = ({ packageInfo }) => {
   const { about, image, price, tour_type, trip_title, _id } = packageInfo || {};
 
   const handleWishlist = (id)=>{
+    console.log(id)
     const toastId = toast.loading("Wishlist Adding...");
 
     const wishlistData = {
