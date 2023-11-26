@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const TourGuides = () => {
   const axiosPublic = useAxiosPublic();
@@ -11,7 +12,6 @@ const TourGuides = () => {
       return res?.data;
     },
   });
-
 
   return (
     <div className="overflow-x-auto">
@@ -59,13 +59,15 @@ const TourGuides = () => {
               <td>
                 <h1 className="text-gray-500">+{tourGuide?.phone_number}</h1>
               </td>
-              <th >
-                <button
-                  className=" mx-auto block select-none rounded-lg  bg-gradient-to-tr from-[#FFA828] to-[#FF4804] bg-clip-border hover:rounded-3xl py-2 px-7 text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                  type="button"
-                  data-ripple-light="true">
-                  Details
-                </button>
+              <th>
+                <Link to={`/tourGuideProfile/${tourGuide._id}`}>
+                  <button
+                    className=" mx-auto block select-none rounded-lg  bg-gradient-to-tr from-[#FFA828] to-[#FF4804] bg-clip-border hover:rounded-3xl py-2 px-7 text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    type="button"
+                    data-ripple-light="true">
+                    Details
+                  </button>
+                </Link>
               </th>
             </tr>
           ))}

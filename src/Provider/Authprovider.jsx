@@ -34,19 +34,6 @@ const Authprovider = ({ children }) => {
     return signOut(auth);
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        // User is signed out
-        // ...
-      }
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
 
   const authInfo = {
     loading,
@@ -57,6 +44,16 @@ const Authprovider = ({ children }) => {
     googleLogin,
     logoutUser,
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setLoading(false)
+      setUser(user);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

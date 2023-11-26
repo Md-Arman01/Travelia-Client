@@ -3,8 +3,9 @@
   }
   html,
   body {
-    position: relative;
+    /* position: relative; */
     height: 100%;
+    z-index: -50;
   }
   
   body {
@@ -13,11 +14,13 @@
     color: #000;
     margin: 0;
     padding: 0;
+    z-index: -50;
   }
   
   .swiper {
     width: 100%;
     height: 700px;
+    z-index: -50;
   }
   
   .swiper-slide {
@@ -35,6 +38,7 @@
     width: 100%;
     height: 700px;
     object-fit: cover;
+    z-index: -50;
   }
   
   .autoplay-progress {

@@ -3,7 +3,7 @@ import Container from "./Container";
 import { FiMenu } from "react-icons/fi";
 import MenuItems from "./MenuItems";
 import useAuth from "../Hooks/useAuth";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import toast from "react-hot-toast";
 
@@ -71,9 +71,14 @@ const Navber = () => {
                     tabIndex={0}
                     className="dropdown-content z-[1] menu p-5 text-center shadow bg-base-100 rounded-box min-w-[250px] space-y-3">
                     <div>
-                      <h1 className="text-lg py-2">{displayName}</h1>
+                      <h1 className="text-xl font-semibold py-2">{displayName}</h1>
                       <h1 className="text-xs pb-2">{email}</h1>
                       <hr />
+                    </div>
+                    <div>
+                      <Link to='/dashboard'>
+                         <h1 className="text-base font-medium hover:cursor-pointer">Dashboard</h1>
+                      </Link>
                     </div>
                     <div
                       onClick={handleLogout}

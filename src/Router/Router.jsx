@@ -8,6 +8,10 @@ import Contact from "../Pages/Contact";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import PackageDetails from "../Pages/Home/TravelGuide/OurPackages/PackgeDetails.jsx/PackageDetails";
+import TourGuidesProfile from "../Pages/Home/TravelGuide/TourGuides/TourGuidesProfile";
+import PrivateRoute from "../SecretRoutes/PrivateRoute/PrivateRoute";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+
 
 const Router = createBrowserRouter([
   {
@@ -46,6 +50,17 @@ const Router = createBrowserRouter([
         path: "/packageDetails/:id",
         element: <PackageDetails></PackageDetails>
       },
+      {
+        path: "/tourGuideProfile/:id",
+        element: <PrivateRoute><TourGuidesProfile></TourGuidesProfile></PrivateRoute>
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+        children:[
+          
+        ]
+      }
     ],
   },
 ]);

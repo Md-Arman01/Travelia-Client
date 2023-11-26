@@ -12,7 +12,7 @@ const TravelGuide = () => {
   return (
     <>
       <div>
-        <h1 className="text-4xl font-Rancho text-center my-10">
+        <h1 className="text-6xl font-Rancho text-center my-10 bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text">
           Tourism and Travel Guide
         </h1>
       </div>

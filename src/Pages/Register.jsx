@@ -9,12 +9,14 @@ import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.confiq";
 import GoogleSignIn from "../Component/GoogleSignIn";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 const image_bb_API = import.meta.env.VITE_IMAGE_API;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_bb_API}`;
 
 const Register = () => {
   const [disable, setDisable] = useState(true);
   const { createUser, setUser } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const {
     register,
@@ -35,13 +37,10 @@ const Register = () => {
       },
     });
     const image = res?.data?.data?.display_url;
-    
+
     createUser(email, password)
       .then((result) => {
-        toast.success("Sign Up Successfully!", { id: toastId });
-        navigate("/");
-        console.log(result.user);
-
+        console.log(result);
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: image,
@@ -49,6 +48,22 @@ const Register = () => {
           .then(() => {
             // Profile updated!
             // ...
+            if (auth?.currentUser?.email) {
+              toast.success("Sign Up Successfully!", { id: toastId });
+              navigate("/");
+            }
+
+            const userInfo = {
+              user_name: auth?.currentUser?.displayName,
+              user_email: auth?.currentUser?.email,
+              user_image: auth?.currentUser?.photoURL,
+              role: "Tourist",
+            };
+
+            axiosPublic.post("/users", userInfo).then((res) => {
+              console.log(res);
+            });
+
             setUser({
               ...auth.currentUser,
               displayName: name,
@@ -63,7 +78,7 @@ const Register = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        toast.error( errorCode , {id: toastId})
+        toast.error(errorCode, { id: toastId });
       });
   };
 
