@@ -4,14 +4,41 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 const ManageUser = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: allUsers } = useQuery({
+  const { data: allUsers , refetch} = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
       return res?.data;
     },
   });
-  console.log(allUsers);
+
+  const handleMakeGuide = (id)=>{
+    const update ={
+        role: 'Tour Guide'
+    }
+    axiosSecure.put(`/users/${id}`, update)
+    .then(res => {
+        console.log(res.data)
+        if(res?.data.role === 'Tour Guide'){
+            refetch()
+        }
+    })
+  }
+  const handleMakeAdmin = (id)=>{
+    const update ={
+        role: 'Admin'
+    }
+    axiosSecure.put(`/users/${id}`, update)
+    .then(res => {
+        console.log(res.data)
+        if(res?.data.role === 'Admin'){
+            refetch()
+        }
+    })
+  }
+
+
+
 
   return (
     <>
@@ -56,20 +83,49 @@ const ManageUser = () => {
                       <td className="text-gray-500">{user?.user_email}</td>
                       <td className="text-gray-500 ">{user?.role}</td>
                       <th>
-                        <button
-                          className={`mx-auto block select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-3 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
+                        {
+                            user?.role === 'Tourist'?
+                            <button
+                          onClick={()=>handleMakeGuide(user?._id)}
+                          className="mx-auto block select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                           type="button"
                           data-ripple-light="true">
                           Guide
                         </button>
+                        :
+                        <button
+                          onClick={()=>handleMakeGuide(user?._id)}
+                          disabled
+                          className="mx-auto block select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                          type="button"
+                          data-ripple-light="true">
+                          Guide
+                        </button>
+                        }
+                        
                       </th>
                       <th>
-                        <button
-                          className={`mx-auto block select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-3 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
+                        {
+                            user?.role === 'Tourist'?
+                            <button
+                            onClick={()=>handleMakeAdmin(user?._id)}
+                          className="mx-auto block select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                           type="button"
                           data-ripple-light="true">
                           Admin
                         </button>
+                        :
+                        <button
+                          className="mx-auto block select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                          type="button"
+                          onClick={()=>handleMakeAdmin(user?._id)}
+                          disabled
+                          data-ripple-light="true">
+                          Admin
+                        </button>
+
+                        }
+                        
                       </th>
                     </tr>
                   ))}
