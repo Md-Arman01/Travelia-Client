@@ -74,33 +74,33 @@ const Navber = () => {
                     className="dropdown-content z-[1] menu p-5 text-center shadow bg-base-100 rounded-box min-w-[250px] space-y-3">
                     <div>
                       <h1 className="text-xl font-semibold py-2">{displayName}</h1>
-                      <h1 className="text-xs pb-2">{email}</h1>
+                      <h1 className="text-xs pb-2 text-gray-400">{email}</h1>
                       <hr />
                     </div>
                     <div>
                       {
                         user && userInfo?.role === 'Tourist' && 
                               <Link to='/dashboard/touristProfile'>
-                                <h1 className="text-base font-medium hover:cursor-pointer">Dashboard</h1>
+                                <h1 className="text-lg font-medium hover:cursor-pointer">Dashboard</h1>
                               </Link>
                       }
                       {
                         user && userInfo?.role === 'Tour Guide' &&
                         <Link to='/dashboard/tourGuideProfile'>
-                        <h1 className="text-base font-medium hover:cursor-pointer">Dashboard</h1>
+                        <h1 className="text-lg font-medium hover:cursor-pointer">Dashboard</h1>
                         </Link>
                       }
                       {
                         user && userInfo?.role === 'Admin' &&
                         <Link to='/dashboard/adminProfile'>
-                        <h1 className="text-base font-medium hover:cursor-pointer">Dashboard</h1>
+                        <h1 className="text-lg font-medium hover:cursor-pointer">Dashboard</h1>
                         </Link>
                       }
                     </div>
                     <div
                       onClick={handleLogout}
                       className="flex items-center justify-center gap-2 text-lg text-red-400 hover:text-red-500 hover:cursor-pointer">
-                      <p>logout</p>
+                      <p>Sign out</p>
                       <FaArrowRightToBracket></FaArrowRightToBracket>
                     </div>
                   </ul>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import useAuth from "../../../../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../../Hooks/useAxiosPublic";
@@ -8,6 +9,7 @@ import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import useUserInfo from "../../../../../Hooks/useUserInfo";
 const image_bb_API = import.meta.env.VITE_IMAGE_API;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_bb_API}`;
 
@@ -15,6 +17,9 @@ const BookingForm = ({ item }) => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const [userInfo] = useUserInfo();
+  console.log(userInfo);
+
   const {
     register,
     handleSubmit,
@@ -49,7 +54,7 @@ const BookingForm = ({ item }) => {
       user_image: image,
       tour_type: item?.tour_type,
       trip_title: item?.trip_title,
-      status: 'In Review'
+      status: "In Review",
     };
     axiosSecure.post("/bookings", bookingInfo).then((res) => {
       if (res?.status === 200) {
@@ -165,7 +170,7 @@ const BookingForm = ({ item }) => {
           <div className="p-6 pt-0">
             {/* modal */}
             {/* Open the modal using document.getElementById('ID').showModal() method */}
-            {user && user?.email ? (
+            {user && userInfo?.role === "Tourist" ? (
               <h1
                 onClick={() =>
                   document.getElementById("my_modal_5").showModal()
@@ -175,15 +180,19 @@ const BookingForm = ({ item }) => {
                 Book Now
               </h1>
             ) : (
-              <button
-                onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
-                }
-                disabled
-                className=" hover:rounded-3xl block w-48 mx-auto select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-2 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-light="true">
-                Book Now
-              </button>
+              <div
+                className="tooltip flex justify-center mt-5"
+                data-tip={`You don't booking package because you are (${userInfo?.role ? userInfo?.role : 'Sing out'})`}>
+                <button
+                  onClick={() =>
+                    document.getElementById("my_modal_5").showModal()
+                  }
+                  disabled
+                  className=" hover:rounded-3xl block w-48 select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-2 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                  data-ripple-light="true">
+                  Book Now
+                </button>
+              </div>
             )}
             <dialog
               id="my_modal_5"
@@ -199,7 +208,7 @@ const BookingForm = ({ item }) => {
                       data-ripple-light="true">
                       Confirm Booking
                     </button>
-                    <Link>
+                    <Link to="/dashboard/bookings">
                       <p className="link link-error">
                         See your booking package
                       </p>
