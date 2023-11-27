@@ -2,18 +2,29 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { RxCross1 } from "react-icons/rx";
+import toast from "react-hot-toast";
 
 const Booking = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const { data: userBookings } = useQuery({
+  const { data: userBookings , refetch} = useQuery({
     queryKey: ["userBookings"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/bookings/${user?.email}`);
       return res?.data;
     },
   });
-  console.log(userBookings);
+  const handleDeleteBooking = (id)=>{
+    const toastId = toast.loading("Package Canceling...");
+    axiosSecure.delete(`/bookings/${id}`)
+    .then(res =>{
+      console.log(res?.data?._id)
+      if(res?.data?._id){
+        refetch()
+        toast.success("Package Canceled...!", { id: toastId });
+      }
+    })
+  }
 
   return (
     <div>
@@ -90,7 +101,7 @@ const Booking = () => {
                       </th>
                       <th>
                         {user?.status === "In Review" && (
-                          <button className="btn rounded-full bg-red-400 hover:bg-red-300">
+                          <button onClick={()=>handleDeleteBooking(user?._id)} className="btn rounded-full bg-red-400 hover:bg-red-300">
                           <RxCross1 className="text-base"></RxCross1>
                         </button>
                         )}
