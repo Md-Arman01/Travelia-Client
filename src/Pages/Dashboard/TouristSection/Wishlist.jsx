@@ -9,27 +9,25 @@ const Wishlist = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-
-  const { data: userWishlist , refetch} = useQuery({
+  const { data: userWishlist, refetch } = useQuery({
     queryKey: ["userWishlist"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/wishlist/${user?.email}`);
       return res?.data;
     },
   });
-  
-  const handleWishlistDelete = (id)=>{
+  console.log(userWishlist);
+
+  const handleWishlistDelete = (id) => {
     const toastId = toast.loading("Wishlist Deleting...");
-    
-    axiosSecure.delete(`/wishlist/${id}`)
-    .then(res => {
-      if(res?.data._id){
-        refetch()
+
+    axiosSecure.delete(`/wishlist/${id}`).then((res) => {
+      if (res?.data._id) {
+        refetch();
         toast.success("Wishlist Deleted!", { id: toastId });
       }
-    })
-  }
-
+    });
+  };
 
   return (
     <div>
@@ -53,7 +51,9 @@ const Wishlist = () => {
                     <th className="text-lg text-black">Image</th>
                     <th className="text-lg text-black">Package</th>
                     <th className="text-lg text-black">Price</th>
-                    <th className="text-lg text-black text-center">Visit Package</th>
+                    <th className="text-lg text-black text-center">
+                      Visit Package
+                    </th>
                     <th className="text-lg text-black">Cancel</th>
                   </tr>
                 </thead>
@@ -78,9 +78,11 @@ const Wishlist = () => {
                             View Package
                           </button>
                         </Link>
-                        </td>
+                      </td>
                       <td>
-                        <button onClick={()=>handleWishlistDelete(wishlist?._id)} className="btn rounded-full bg-red-400 hover:bg-red-300">
+                        <button
+                          onClick={() => handleWishlistDelete(wishlist?._id)}
+                          className="btn rounded-full bg-red-400 hover:bg-red-300">
                           <RxCross1 className="text-base"></RxCross1>
                         </button>
                       </td>

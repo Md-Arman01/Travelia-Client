@@ -15,27 +15,27 @@ const TourGuidesProfile = () => {
   const axiosPublic = useAxiosPublic();
 
   // guide
-  const { data: singleTourGuide } = useQuery({
-    queryKey: ["singleTourGuide"],
-    queryFn: async () => {
-      const res = await axiosPublic.get(`/tourGuides/${id}`);
-      return res?.data;
-    },
-  });
-  const [cardInfo] = singleTourGuide || [];
+  const {data: singleUserInfo} = useQuery({
+      queryKey:['singleUserInfo'],
+      queryFn: async()=>{
+        const res = await axiosSecure.get(`/users2/${id}`)
+        return res?.data
+      }
+    })
+  const [cardInfo] = singleUserInfo || [];
+  console.log(cardInfo)
 
   // all comments
   const { data: tourGuideComments, refetch } = useQuery({
-    queryKey: ["tourGuideComments", cardInfo?.provider_email],
+    queryKey: ["tourGuideComments", cardInfo?.user_email],
     queryFn: async () => {
       const res = await axiosPublic.get(
-        `/comments/${cardInfo?.provider_email}`
+        `/comments/${cardInfo?.user_email}`
       );
       return res?.data;
     },
   });
 
-  console.log(tourGuideComments);
 
   // add comment
   const handleComment = (e) => {
@@ -47,7 +47,7 @@ const TourGuidesProfile = () => {
     const commentInfo = {
       user_email: user?.email,
       user_image: user?.photoURL,
-      tour_guide_email: cardInfo?.provider_email,
+      tour_guide_email: cardInfo?.user_email,
       comment: comment,
       rating: rating,
     };
@@ -73,13 +73,13 @@ const TourGuidesProfile = () => {
           <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg rounded-xl bg-clip-border">
             <img
               className="h-full w-full object-cover"
-              src={cardInfo?.image}
+              src={cardInfo?.user_image}
               alt="profile-picture"
             />
           </div>
           <div className="px-5 mt-5 text-center">
             <h4 className="block  text-4xl font-Rancho antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-              {cardInfo?.provider_name}
+              {cardInfo?.user_name}
             </h4>
           </div>
           <div className="p-5 space-y-1">
@@ -93,7 +93,7 @@ const TourGuidesProfile = () => {
               Education: {cardInfo?.education}
             </h1>
             <h1 className="text-base font-semibold text-gray-500">
-              Email: {cardInfo?.provider_email}
+              Email: {cardInfo?.user_email}
             </h1>
             <h1 className="text-base font-semibold text-gray-500">
               Contact No: {cardInfo?.phone_number}

@@ -83,6 +83,7 @@ const Booking = () => {
                       <th>
                         <button
                           className="mx-auto block w-full select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                          disabled
                           data-ripple-light="true">
                           Apply
                         </button>

@@ -1,34 +1,35 @@
-import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import useAllUsers from "../../../Hooks/useAllUsers";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
+
 const ManageUser = () => {
+  const [allUsers, refetch] = useAllUsers()
   const axiosSecure = useAxiosSecure();
 
-  const { data: allUsers, refetch } = useQuery({
-    queryKey: ["allUsers"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/users");
-      return res?.data;
-    },
-  });
-
   const handleMakeGuide = (id) => {
+    const toastId = toast.loading("Making Tour Guide...");
+    
+
     const update = {
       role: "Tour Guide",
     };
     axiosSecure.put(`/users/${id}`, update).then((res) => {
       if (res?.data.role === "Tour Guide") {
+        toast.success("Make Tour Guide Successfully!", { id: toastId });
         refetch();
       }
     });
   };
   const handleMakeAdmin = (id) => {
+    const toastId = toast.loading("Making Admin...");
     const update = {
       role: "Admin",
     };
     axiosSecure.put(`/users/${id}`, update).then((res) => {
       if (res?.data.role === "Admin") {
         refetch();
+        toast.success("Make Admin Successfully!", { id: toastId });
       }
     });
   };

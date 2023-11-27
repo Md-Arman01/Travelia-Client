@@ -18,7 +18,6 @@ const BookingForm = ({ item }) => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [userInfo] = useUserInfo();
-  console.log(userInfo);
 
   const {
     register,
@@ -57,7 +56,7 @@ const BookingForm = ({ item }) => {
       status: "In Review",
     };
     axiosSecure.post("/bookings", bookingInfo).then((res) => {
-      if (res?.status === 200) {
+      if(res?.data?._id){
         toast.success("Booking Successfully!", { id: toastId });
       }
     });

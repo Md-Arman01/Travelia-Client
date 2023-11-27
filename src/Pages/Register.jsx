@@ -58,6 +58,10 @@ const Register = () => {
               user_email: auth?.currentUser?.email,
               user_image: auth?.currentUser?.photoURL,
               role: "Tourist",
+              phone_number: 'A/N',
+              education: "A/N",
+              skills: "A/N",
+              work_experience: "A/N",
             };
 
             axiosPublic.post("/users", userInfo).then((res) => {

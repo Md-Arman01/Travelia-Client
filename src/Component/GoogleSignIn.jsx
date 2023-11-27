@@ -23,7 +23,11 @@ const GoogleSignIn = () => {
               user_name: user?.displayName,
               user_email: user?.email,
               user_image: user?.photoURL,
-              role: 'Tourist'
+              role: 'Tourist',
+              phone_number: 'A/N',
+              education: "A/N",
+              skills: "A/N",
+              work_experience: "A/N",
             };
     
             axiosPublic.post("/users", userInfo)
