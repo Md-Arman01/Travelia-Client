@@ -11,14 +11,13 @@ const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_bb_API}`;
 
 const Profile = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-
 
   const onSubmit = async (data) => {
     const toastId = toast.loading("Adding story...");
@@ -31,22 +30,20 @@ const Profile = () => {
     const image = res?.data?.data?.display_url;
 
     const storyInfo = {
-        provider_image: user?.photoURL,
-        provider_name: data?.name,
-        provider_email: user?.email,
-        tour_place: data?.tourPlace,
-        tour_experience: data?.tourExperience,
-        story_image: image,
-    }
-    console.log(storyInfo)
-    axiosPublic.post('/storys', storyInfo)
-    .then(res =>{
-        if(res?.data?._id){
-            toast.success("Story Added Successfully..!", { id: toastId })
-        }
-    })
-
-
+      provider_image: user?.photoURL,
+      provider_name: data?.name,
+      provider_email: user?.email,
+      tour_place: data?.tourPlace,
+      tour_experience: data?.tourExperience,
+      story_image: image,
+    };
+    console.log(storyInfo);
+    axiosPublic.post("/storys", storyInfo).then((res) => {
+      if (res?.data?._id) {
+        reset();
+        toast.success("Story Added Successfully..!", { id: toastId });
+      }
+    });
   };
 
   return (
@@ -79,87 +76,91 @@ const Profile = () => {
           </div>
         </div>
         {/* form */}
-        <div className="bg-[#F6F6F6] p-10 rounded-xl flex-1">
-            <h1 className="text-4xl font-Rancho border-b-4 border-dashed w-fit pb-2 mx-auto mb-10">Add Story</h1>
+        <div className="flex items-center justify-center bg-[#F6F6F6] rounded-xl md:h-[540px] flex-1">
           <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {/* 1 */}
-                <div>
-                  <div className="relative h-11 w-full min-w-[200px]">
-                    <input
-                      {...register("name", { required: true })}
-                      className="peer h-full w-full border-b border-blue-gray-200 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-[#FFA828] focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                      placeholder=" "
-                    />
-                    <label className="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-[#FFA828] after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-[#FFA828] peer-focus:after:scale-x-100 peer-focus:after:border-[#FFA828] peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                      Enter your name
-                    </label>
+            <h1 className="text-4xl font-Rancho border-b-4 border-dashed w-fit pb-2 mx-auto mb-10">
+              Add Story
+            </h1>
+            <div>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {/* 1 */}
+                  <div>
+                    <div className="relative h-11 w-full ">
+                      <input
+                        {...register("name", { required: true })}
+                        className="peer h-full w-full border-b border-blue-gray-200 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-[#FFA828] focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                        placeholder=" "
+                      />
+                      <label className="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-[#FFA828] after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-[#FFA828] peer-focus:after:scale-x-100 peer-focus:after:border-[#FFA828] peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                        Enter your name
+                      </label>
+                    </div>
+                    {errors.name && (
+                      <span className="text-red-400 text-xs">
+                        This field is required
+                      </span>
+                    )}
                   </div>
-                  {errors.name && (
-                    <span className="text-red-400 text-xs">
-                      This field is required
-                    </span>
-                  )}
-                </div>
-                {/* 2 */}
-                <div>
-                  <div className="relative h-11 w-full min-w-[200px]">
-                    <input
-                      {...register("tourPlace", { required: true })}
-                      className="peer h-full w-full border-b border-blue-gray-200 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-[#FFA828] focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                      placeholder=" "
-                    />
-                    <label className="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-[#FFA828] after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-[#FFA828] peer-focus:after:scale-x-100 peer-focus:after:border-[#FFA828] peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                      Tour Place
-                    </label>
+                  {/* 2 */}
+                  <div>
+                    <div className="relative h-11 w-full ">
+                      <input
+                        {...register("tourPlace", { required: true })}
+                        className="peer h-full w-full border-b border-blue-gray-200 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-[#FFA828] focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                        placeholder=" "
+                      />
+                      <label className="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-[#FFA828] after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-[#FFA828] peer-focus:after:scale-x-100 peer-focus:after:border-[#FFA828] peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                        Tour Place
+                      </label>
+                    </div>
+                    {errors.tourPlace && (
+                      <span className="text-red-400 text-xs">
+                        This field is required
+                      </span>
+                    )}
                   </div>
-                  {errors.tourPlace && (
-                    <span className="text-red-400 text-xs">
-                      This field is required
-                    </span>
-                  )}
-                </div>
-                {/* 3 */}
-                <div>
-                  <div className="relative h-11 w-full min-w-[200px]">
-                    <input
-                      {...register("tourExperience", { required: true })}
-                      className="peer h-full w-full border-b border-blue-gray-200 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-[#FFA828] focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                      placeholder=" "
-                    />
-                    <label className="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-[#FFA828] after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-[#FFA828] peer-focus:after:scale-x-100 peer-focus:after:border-[#FFA828] peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                      Shear tour experience
-                    </label>
+                  {/* 3 */}
+                  <div>
+                    <div className="relative h-11 w-full">
+                      <input
+                        {...register("tourExperience", { required: true })}
+                        className="peer h-full w-full border-b border-blue-gray-200 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-[#FFA828] focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                        placeholder=" "
+                      />
+                      <label className="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-[#FFA828] after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-[#FFA828] peer-focus:after:scale-x-100 peer-focus:after:border-[#FFA828] peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                        Shear tour experience
+                      </label>
+                    </div>
+                    {errors.tourExperience && (
+                      <span className="text-red-400 text-xs">
+                        This field is required
+                      </span>
+                    )}
                   </div>
-                  {errors.tourExperience && (
-                    <span className="text-red-400 text-xs">
-                      This field is required
-                    </span>
-                  )}
+                  {/* 4 */}
+                  <div>
+                    <input
+                      type="file"
+                      {...register("image", { required: true })}
+                      className="file-input file-input-bordered file-input-md w-full"
+                    />
+                    {errors.image?.type === "required" && (
+                      <span className="text-red-400 text-xs ">
+                        Image is required
+                      </span>
+                    )}
+                  </div>
+                  {/* --- */}
                 </div>
-                {/* 4 */}
-                <div>
-                  <input
-                    type="file"
-                    {...register("image", { required: true })}
-                    className="file-input file-input-bordered file-input-md w-full"
-                  />
-                  {errors.image?.type === "required" && (
-                    <span className="text-red-400 text-xs ">
-                      Image is required
-                    </span>
-                  )}
-                </div>
-                {/* --- */}
-              </div>
-              <button
-                className="block w-52 normal-case mx-auto select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] bg-clip-border hover:rounded-3xl mt-10 py-3.5 px-7 text-center align-middle  text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                type="submit"
-                data-ripple-light="true">
-                Add Story
-              </button>
-            </form>
+                <button
+                  className="block w-52 normal-case mx-auto select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] bg-clip-border hover:rounded-3xl mt-10 py-3.5 px-7 text-center align-middle  text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                  type="submit"
+                  data-ripple-light="true">
+                  Add Story
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
