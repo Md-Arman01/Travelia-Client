@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import { RxCross1 } from "react-icons/rx";
 
 const Booking = () => {
   const axiosSecure = useAxiosSecure();
@@ -23,7 +24,7 @@ const Booking = () => {
         <div>
           <div className="flex justify-between">
             <h1 className="text-4xl  font-semibold">
-              Total Users: {userBookings?.length}
+              Total Bookings: {userBookings?.length}
             </h1>
           </div>
           {/*  */}
@@ -39,8 +40,8 @@ const Booking = () => {
                     <th className="text-lg text-black">Price</th>
                     <th className="text-lg text-black">Status</th>
                     <th className="text-lg text-black">Payment</th>
-                    <th className="text-lg text-black">Cancel</th>
                     <th className="text-lg text-black">Discount</th>
+                    <th className="text-lg text-black"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -52,27 +53,46 @@ const Booking = () => {
                       </td>
                       <td className="text-gray-500">{user?.date}</td>
                       <td className="text-gray-500 ">{user?.price} $</td>
-                      <td className="text-gray-500 ">{user?.status}</td>
+                      <td className="text-gray-500 ">
+                        {user?.status === 'In Review' &&
+                         <p>{user?.status}</p>
+                         }
+                        {user?.status === 'Rejected' &&
+                         <p className="text-red-500">{user?.status}</p>
+                         }
+                        {user?.status === 'Accepted' &&
+                         <p className="text-green-500">{user?.status}</p>
+                         }
+                        </td>
                       <th>
-                      <button
-                        className="mx-auto block w-full select-none rounded-lg bg-blue-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-light="true">
-                        Pay
-                      </button>
+                        {user?.status === "Accepted" ? (
+                          <button
+                            className="mx-auto block w-full select-none rounded-lg bg-blue-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            data-ripple-light="true">
+                            Pay
+                          </button>
+                        ) : (
+                          <button
+                            className="mx-auto block w-full select-none rounded-lg bg-blue-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            disabled
+                            data-ripple-light="true">
+                            Pay
+                          </button>
+                        )}
                       </th>
                       <th>
-                      <button
-                        className="mx-auto block w-full select-none rounded-lg bg-red-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-light="true">
-                        Cancel
-                      </button>
+                        <button
+                          className="mx-auto block w-full select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                          data-ripple-light="true">
+                          Apply
+                        </button>
                       </th>
                       <th>
-                      <button
-                        className="mx-auto block w-full select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-light="true">
-                        Apply
-                      </button>
+                        {user?.status === "In Review" && (
+                          <button className="btn rounded-full bg-red-400 hover:bg-red-300">
+                          <RxCross1 className="text-base"></RxCross1>
+                        </button>
+                        )}
                       </th>
                     </tr>
                   ))}

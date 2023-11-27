@@ -182,7 +182,7 @@ const BookingForm = ({ item }) => {
             ) : (
               <div
                 className="tooltip flex justify-center mt-5"
-                data-tip={`You don't booking package because you are (${userInfo?.role ? userInfo?.role : 'Sing out'})`}>
+                data-tip={`You can't booking package because you are (${userInfo?.role ? userInfo?.role : 'Sign out'})`}>
                 <button
                   onClick={() =>
                     document.getElementById("my_modal_5").showModal()
