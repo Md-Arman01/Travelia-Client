@@ -49,7 +49,7 @@ const Booking = () => {
                     <tr key={user._id}>
                       <th className="text-gray-500">{user?.trip_title}</th>
                       <td className="text-gray-500">
-                        {user?.select_tour_guide}
+                        {user?.select_tour_guide?.replaceAll("_"," ")}
                       </td>
                       <td className="text-gray-500">{user?.date}</td>
                       <td className="text-gray-500 ">{user?.price} $</td>

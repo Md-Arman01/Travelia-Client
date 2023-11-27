@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import useAuth from "../../../../../Hooks/useAuth";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../../../Hooks/useAxiosPublic";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -10,28 +8,23 @@ import toast from "react-hot-toast";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import useUserInfo from "../../../../../Hooks/useUserInfo";
+import useAllUsers from "../../../../../Hooks/useAllUsers";
 const image_bb_API = import.meta.env.VITE_IMAGE_API;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_bb_API}`;
 
 const BookingForm = ({ item }) => {
-  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [userInfo] = useUserInfo();
+  const [allUsers] = useAllUsers()
+  const allTourGuide = allUsers?.filter(user => user.role === "Tour Guide")
+  
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const { data: allTourGuides } = useQuery({
-    queryKey: ["allTourGuides"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/tourGuides");
-      return res?.data;
-    },
-  });
 
   const onSubmit = async (data) => {
     const toastId = toast.loading("Booking Pending...");
@@ -43,11 +36,12 @@ const BookingForm = ({ item }) => {
       },
     });
     const image = res?.data?.data?.display_url;
+    const tourGuideName = data?.select?.replaceAll(" ","_")
 
     const bookingInfo = {
       user_name: data?.name || user?.displayName,
       user_email: data?.email || user?.email,
-      select_tour_guide: data?.select,
+      select_tour_guide: tourGuideName,
       date: data?.date,
       price: item?.price,
       user_image: image,
@@ -139,9 +133,9 @@ const BookingForm = ({ item }) => {
                 required
                 {...register("select")}
                 className="select select-bordered w-full">
-                {allTourGuides?.map((tourGuide) => (
+                {allTourGuide?.map((tourGuide) => (
                   <option key={tourGuide._id}>
-                    {tourGuide?.provider_name}
+                    {tourGuide?.user_name}
                   </option>
                 ))}
                 <option>Greedo</option>

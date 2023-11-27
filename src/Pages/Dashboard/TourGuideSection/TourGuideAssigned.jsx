@@ -1,4 +1,52 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../Hooks/useAuth";
+import toast from "react-hot-toast";
+
 const TourGuideAssigned = () => {
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const tourGuideName = user?.displayName?.replaceAll(" ", "_");
+
+  const { data: tourAssignedAll, refetch } = useQuery({
+    queryKey: ["tourAssignedAll"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/bookings2/${tourGuideName}`);
+      return res?.data;
+    },
+  });
+  console.log(tourAssignedAll);
+
+  const handleAccepted = (id) => {
+    const toastId = toast.loading("Accepting...");
+
+    const changeStatus = {
+      status: "Accepted",
+    };
+    axiosSecure.put(`/bookings/${id}`, changeStatus).then((res) => {
+      if (res?.data.status === "Accepted") {
+        console.log(res?.data?.status);
+        refetch();
+        toast.success("Accepted!", { id: toastId });
+      }
+    });
+  };
+
+  const handleRejected = (id) => {
+    const toastId = toast.loading("Rejecting...");
+
+    const changeStatus = {
+      status: "Rejected",
+    };
+    axiosSecure.put(`/bookings/${id}`, changeStatus).then((res) => {
+      if (res?.data.status === "Rejected") {
+        console.log(res?.data?.status);
+        refetch();
+        toast.success("Rejected!", { id: toastId });
+      }
+    });
+  };
+
   return (
     <div>
       <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
@@ -7,9 +55,7 @@ const TourGuideAssigned = () => {
       <div className="bg-[#F6F6F6] p-10 rounded-xl">
         <div>
           <div className="flex justify-between">
-            <h1 className="text-4xl  font-semibold">
-              Assigned Tours: 
-            </h1>
+            <h1 className="text-4xl  font-semibold">Assigned Tours:</h1>
           </div>
           {/*  */}
           <div>
@@ -21,45 +67,67 @@ const TourGuideAssigned = () => {
                     <th className="text-lg text-black">Package</th>
                     <th className="text-lg text-black">Tourist Name</th>
                     <th className="text-lg text-black">Tour Date</th>
-                    <th className="text-lg text-black text-center">Price</th>
-                    <th className="text-lg text-black">Accept</th>
-                    <th className="text-lg text-black">Reject</th>
+                    <th className="text-lg text-black">Price</th>
+                    <th className="text-lg text-black text-center">Accept</th>
+                    <th className="text-lg text-black text-center">Reject</th>
                   </tr>
                 </thead>
-                {/* <tbody>
-                  {userWishlist?.map((wishlist) => (
-                    <tr key={wishlist._id}>
+                <tbody>
+                  {tourAssignedAll?.map((tourAssigned) => (
+                    <tr key={tourAssigned._id}>
                       <th className="text-gray-500">
-                        <div className="avatar">
-                          <div className="w-24 h-16 object-cover rounded-lg">
-                            <img src={wishlist?.image} />
-                          </div>
-                        </div>
+                        {tourAssigned?.trip_title}
                       </th>
-                      <td className="text-gray-500">{wishlist?.trip_title}</td>
-                      <td className="text-gray-500 ">{wishlist?.price} $</td>
+                      <td className="text-gray-500">
+                        {tourAssigned?.user_name}
+                      </td>
+                      <td className="text-gray-500 ">{tourAssigned?.date}</td>
                       <td className="text-gray-500 ">
-                        <Link to={`/packageDetails/${wishlist?.package_id}`}>
-                          <button
-                            className={` mx-auto block select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] bg-clip-border hover:rounded-3xl py-3.5 px-7 text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
-                            type="button"
-                            data-ripple-light="true">
-                            View Package
-                          </button>
-                        </Link>
-                        hiiiii
+                        {tourAssigned?.price} $
                       </td>
                       <td>
-                        <button
-                          onClick={() => handleWishlistDelete(wishlist?._id)}
-                          className="btn rounded-full bg-red-400 hover:bg-red-300">
-                          <RxCross1 className="text-base"></RxCross1>
-                        </button>
-                        jhdlkfjdkfj
+                        {tourAssigned?.status === "Accepted" ? (
+                          <button
+                            onClick={() => handleAccepted(tourAssigned?._id)}
+                            className="mx-auto block select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                            disabled
+                            data-ripple-light="true">
+                            Accepted
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleAccepted(tourAssigned?._id)}
+                            className="mx-auto block select-none rounded-lg bg-green-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                            data-ripple-light="true">
+                            Accept
+                          </button>
+                        )}
+                      </td>
+                      <td>
+                        {tourAssigned?.status === "Rejected" ? (
+                          <button
+                            onClick={() => handleRejected(tourAssigned?._id)}
+                            className="mx-auto block select-none rounded-lg bg-red-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                            disabled
+                            data-ripple-light="true">
+                            Rejected
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleRejected(tourAssigned?._id)}
+                            className="mx-auto block select-none rounded-lg bg-red-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                            data-ripple-light="true">
+                            Reject
+                          </button>
+                        )}
                       </td>
                     </tr>
                   ))}
-                </tbody> */}
+                </tbody>
               </table>
             </div>
           </div>
