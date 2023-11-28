@@ -35,7 +35,7 @@ const AddPackage = () => {
         day_3: data?.day_3,
         price: data?.price
     }
-    axiosSecure.post('packages', packageData)
+    axiosSecure.post('/packages', packageData)
     .then(res => {
         console.log(res?.data)
         if(res?.data?.price){
