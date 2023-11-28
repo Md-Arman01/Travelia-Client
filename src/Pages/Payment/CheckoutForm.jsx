@@ -5,12 +5,14 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import useAuth from "../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ id }) => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosPublic = useAxiosPublic()
   const {user} = useAuth()
+  const navigate = useNavigate()
   const [clientSecret, setClientSecret] = useState('')
 
 
@@ -24,7 +26,6 @@ const CheckoutForm = ({ id }) => {
   })
   const [bookingData] = bookingPackage || []  
   const totalPrice = bookingData?.price || {}
-  console.log(totalPrice)
 
   useEffect(()=>{
     totalPrice > 0 &&
@@ -75,7 +76,22 @@ const CheckoutForm = ({ id }) => {
       }else{
         console.log("payment intent", paymentIntent)
         if(paymentIntent.status === "succeeded"){
-            toast.success("Payment Successfully!", { id: toastId });
+            const paymentDetails ={
+                user_name: user?.displayName,
+                user_email: user?.email,
+                price: totalPrice,
+                payment_id: paymentIntent?.id,
+                package_name: bookingData?.trip_title,
+                
+            }
+            axiosPublic.post('/payment', paymentDetails)
+            .then(res =>{
+                if(res?.data?._id){
+                    navigate('/dashboard/bookings')
+                    toast.success("Payment Successfully!", { id: toastId });
+                }
+            })
+
         }
       }
 
