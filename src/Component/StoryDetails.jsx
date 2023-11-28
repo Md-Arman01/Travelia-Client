@@ -1,24 +1,25 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import {
-    FacebookIcon,
-    FacebookShareButton,
-    TelegramIcon,
-    TelegramShareButton,
-    TwitterIcon,
-    TwitterShareButton,
-  } from "react-share";
+  FacebookIcon,
+  FacebookShareButton,
+  TelegramIcon,
+  TelegramShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from "react-share";
+import useAuth from "../Hooks/useAuth";
 
-
-const StoryDetails = ({storyDetails}) => {
-    const {
-        provider_name,
-        provider_email,
-        provider_image,
-        tour_place,
-        story_image,
-        tour_experience,
-      } = storyDetails || {};
-    const shearURl = 'https://book-finder-a4e89.web.app/'
+const StoryDetails = ({ storyDetails }) => {
+  const { user } = useAuth();
+  const {
+    provider_name,
+    provider_email,
+    provider_image,
+    tour_place,
+    story_image,
+    tour_experience,
+  } = storyDetails || {};
+  const shearURl = "https://book-finder-a4e89.web.app/";
 
   return (
     <div className="mb-10">
@@ -42,23 +43,42 @@ const StoryDetails = ({storyDetails}) => {
           <p className="text-gray-500 text-base">{tour_experience}</p>
         </div>
         <div className="flex items-center gap-3 justify-end my-3">
-          <FacebookShareButton url={shearURl}>
-            <FacebookIcon size={32} round={true} />
-          </FacebookShareButton>
-          <TelegramShareButton url={shearURl}>
-            <TelegramIcon size={32} round={true} />
-          </TelegramShareButton>
-          <TwitterShareButton url={shearURl}>
-            <TwitterIcon size={32} round={true} />
-          </TwitterShareButton>
+          {user?.email ? (
+            <>
+              <FacebookShareButton url={shearURl}>
+                <FacebookIcon size={32} round={true} />
+              </FacebookShareButton>
+              <TelegramShareButton url={shearURl}>
+                <TelegramIcon size={32} round={true} />
+              </TelegramShareButton>
+              <TwitterShareButton url={shearURl}>
+                <TwitterIcon size={32} round={true} />
+              </TwitterShareButton>
+            </>
+          ) : (
+            <>
+              <div
+                className="tooltip tooltip-error"
+                data-tip="You can't shear without sing in">
+                <FacebookShareButton disabled url={shearURl}>
+                  <FacebookIcon size={32} round={true} />
+                </FacebookShareButton>
+                <TelegramShareButton disabled url={shearURl}>
+                  <TelegramIcon size={32} round={true} />
+                </TelegramShareButton>
+                <TwitterShareButton disabled url={shearURl}>
+                  <TwitterIcon size={32} round={true} />
+                </TwitterShareButton>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
   );
 };
-StoryDetails.propTypes ={
-    storyDetails: PropTypes.object.isRequired,
-
-}
+StoryDetails.propTypes = {
+  storyDetails: PropTypes.object.isRequired,
+};
 
 export default StoryDetails;

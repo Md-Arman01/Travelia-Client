@@ -16,7 +16,6 @@ const Wishlist = () => {
       return res?.data;
     },
   });
-  console.log(userWishlist);
 
   const handleWishlistDelete = (id) => {
     const toastId = toast.loading("Wishlist Deleting...");

@@ -24,6 +24,8 @@ import TouristStoryDetails from "../Pages/Home/TouristStory/TouristStoryDetails"
 import AllStory from "../Pages/AllStory.jsx/AllStory";
 import TourTypeDetails from "../Pages/Home/TourType/TourTypeDetails";
 import Payment from "../Pages/Payment/Payment";
+import AdminRoute from "../SecretRoutes/AdminRoute/AdminRoute";
+import TourGuideRoute from "../SecretRoutes/TourGuideRoute/TourGuideRoute";
 
 
 const Router = createBrowserRouter([
@@ -101,23 +103,23 @@ const Router = createBrowserRouter([
           },
           {
             path: '/dashboard/tourGuideProfile',
-            element: <PrivateRoute><TourGuideProfile></TourGuideProfile></PrivateRoute>
+            element: <TourGuideRoute><TourGuideProfile></TourGuideProfile></TourGuideRoute>
           },
           {
             path: '/dashboard/tourGuideAssigned',
-            element: <PrivateRoute><TourGuideAssigned></TourGuideAssigned></PrivateRoute>
+            element: <TourGuideRoute><TourGuideAssigned></TourGuideAssigned></TourGuideRoute>
           },
           {
             path: '/dashboard/adminProfile',
-            element: <PrivateRoute><AdminProfile></AdminProfile></PrivateRoute>
+            element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
           },
           {
             path: '/dashboard/addPackage',
-            element: <PrivateRoute><AddPackage></AddPackage></PrivateRoute>
+            element: <AdminRoute><AddPackage></AddPackage></AdminRoute>
           },
           {
             path: '/dashboard/manageUser',
-            element: <PrivateRoute><ManageUser></ManageUser></PrivateRoute>
+            element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
           },
           {
             path: '/dashboard/payment/:id',

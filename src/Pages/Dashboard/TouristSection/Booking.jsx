@@ -15,6 +15,7 @@ const Booking = () => {
       return res?.data;
     },
   });
+
   const handleDeleteBooking = (id) => {
     const toastId = toast.loading("Package Canceling...");
     axiosSecure.delete(`/bookings/${id}`).then((res) => {
