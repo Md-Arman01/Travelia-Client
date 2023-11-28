@@ -3,6 +3,7 @@ import "react-tabs/style/react-tabs.css";
 import { useState } from "react";
 import Packages from "./OurPackages/Packages";
 import TourGuides from "./TourGuides/TourGuides";
+import OverView from "./Overview/OverView";
 
 const TravelGuide = () => {
   // const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
@@ -25,9 +26,9 @@ const TravelGuide = () => {
               <Tab><h1 className="text-2xl font-medium font-Rancho">Meet Our Tour Guides</h1></Tab>
             </TabList>
           </div>
-          <div className="border-2 rounded-2xl shadow-xl p-10">
+          <div className="border-2 rounded-2xl shadow-xl p-10 min-h-[500px]">
           <TabPanel>
-            <h1>arman</h1>
+            <OverView></OverView>
           </TabPanel>
           <TabPanel>
             <Packages></Packages>
