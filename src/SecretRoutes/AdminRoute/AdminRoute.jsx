@@ -4,17 +4,17 @@ import useUserInfo from "../../Hooks/useUserInfo";
 import PropTypes from 'prop-types'
 
 const AdminRoute = ({children}) => {
-    const [userInfo] = useUserInfo()
+    const [userInfo, userIsLoading] = useUserInfo()
     const {user, loading} = useAuth()
 
-    if(loading){
+    if(loading || userIsLoading){
         return <h2>loading..........</h2>
     }
     if(user && userInfo?.role === 'Admin'){
         return children
     }
 
-    return <Navigate to='/signIn'></Navigate>
+    return <Navigate to='/'></Navigate>
 };
 
 AdminRoute.propTypes={

@@ -88,7 +88,7 @@ const TourGuidesProfile = () => {
               Skill: {cardInfo?.skills}
             </h1>
             <h1 className="text-base font-semibold text-gray-500">
-              Work Experience: {cardInfo?.works_experience} years
+              Work Experience: {cardInfo?.work_experience} years
             </h1>
             <h1 className="text-base font-semibold text-gray-500">
               Education: {cardInfo?.education}
@@ -169,12 +169,25 @@ const TourGuidesProfile = () => {
                         />
                       </div>
                     </div>
-                    <button
+                    {
+                      user?.email ?
+                      <button
                       type="submit"
                       className="hover:rounded-3xl block w-20 select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-2 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                       data-ripple-light="true">
                       Send
                     </button>
+                    :
+                    <button
+                      type="submit"
+                      disabled
+                      className="hover:rounded-3xl block w-20 select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-2 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                      data-ripple-light="true">
+                      Send
+                    </button>
+
+                    }
+                    
                   </div>
                 </form>
               </div>

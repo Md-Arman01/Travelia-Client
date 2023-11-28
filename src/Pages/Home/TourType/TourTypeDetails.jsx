@@ -16,7 +16,6 @@ const TourTypeDetails = () => {
     },
   });
   console.log(tourType);
-  const [information] = tourType || []
 
   return (
     <div>
@@ -31,11 +30,7 @@ const TourTypeDetails = () => {
                 tourType?.map(packageInfo => <PackagesCard key={packageInfo?._id} packageInfo={packageInfo}></PackagesCard>)
             }
         </div>
-        <div className="my-10">
-            <h1 className="text-3xl font-semibold border-b-2 w-fit border-black">{information?.tour_type}</h1>
-            <p className="text-xl mt-5 text-gray-500">{information?.about} {information?.day_1} {information?.day_2} {information?.day_3}</p>
-            
-        </div>
+        
       </Container>
     </div>
   );

@@ -138,7 +138,6 @@ const BookingForm = ({ item }) => {
                     {tourGuide?.user_name}
                   </option>
                 ))}
-                <option>Greedo</option>
               </select>
             </div>
             {/* 6 */}

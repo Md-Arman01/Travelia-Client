@@ -70,8 +70,9 @@ const Router = createBrowserRouter([
         element: <AllPackages></AllPackages>
       },
       {
+
         path: "/tourGuideProfile/:id",
-        element: <PrivateRoute><TourGuidesProfile></TourGuidesProfile></PrivateRoute>
+        element: <TourGuidesProfile></TourGuidesProfile>
       },
       {
         path: "/storyDetails/:id",
