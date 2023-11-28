@@ -6,6 +6,7 @@ import TourAbout from "./TourAbout";
 import TourPlan from "./TourPlan";
 import TourGuides from "../../TourGuides/TourGuides";
 import BookingForm from "./BookingForm";
+import Gallery from "./Gallery";
 
 const PackageDetails = () => {
   const axiosPublic = useAxiosPublic();
@@ -24,6 +25,9 @@ const PackageDetails = () => {
       {packageDetails?.map((item) => (
         <div key={item._id}>
           <Container>
+            {/* gallery */}
+            <Gallery></Gallery>
+
             {/* Tour About Section */}
             <div className="my-10">
             <TourAbout item={item}></TourAbout>
