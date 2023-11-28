@@ -3,28 +3,28 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { RxCross1 } from "react-icons/rx";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Booking = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const { data: userBookings , refetch} = useQuery({
+  const { data: userBookings, refetch } = useQuery({
     queryKey: ["userBookings"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/bookings/${user?.email}`);
       return res?.data;
     },
   });
-  const handleDeleteBooking = (id)=>{
+  const handleDeleteBooking = (id) => {
     const toastId = toast.loading("Package Canceling...");
-    axiosSecure.delete(`/bookings/${id}`)
-    .then(res =>{
-      console.log(res?.data?._id)
-      if(res?.data?._id){
-        refetch()
+    axiosSecure.delete(`/bookings/${id}`).then((res) => {
+      console.log(res?.data?._id);
+      if (res?.data?._id) {
+        refetch();
         toast.success("Package Canceled...!", { id: toastId });
       }
-    })
-  }
+    });
+  };
 
   return (
     <div>
@@ -60,28 +60,28 @@ const Booking = () => {
                     <tr key={user._id}>
                       <th className="text-gray-500">{user?.trip_title}</th>
                       <td className="text-gray-500">
-                        {user?.select_tour_guide?.replaceAll("_"," ")}
+                        {user?.select_tour_guide?.replaceAll("_", " ")}
                       </td>
                       <td className="text-gray-500">{user?.date}</td>
                       <td className="text-gray-500 ">{user?.price} $</td>
                       <td className="text-gray-500 ">
-                        {user?.status === 'In Review' &&
-                         <p>{user?.status}</p>
-                         }
-                        {user?.status === 'Rejected' &&
-                         <p className="text-red-500">{user?.status}</p>
-                         }
-                        {user?.status === 'Accepted' &&
-                         <p className="text-green-500">{user?.status}</p>
-                         }
-                        </td>
+                        {user?.status === "In Review" && <p>{user?.status}</p>}
+                        {user?.status === "Rejected" && (
+                          <p className="text-red-500">{user?.status}</p>
+                        )}
+                        {user?.status === "Accepted" && (
+                          <p className="text-green-500">{user?.status}</p>
+                        )}
+                      </td>
                       <th>
                         {user?.status === "Accepted" ? (
-                          <button
-                            className="mx-auto block w-full select-none rounded-lg bg-blue-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            data-ripple-light="true">
-                            Pay
-                          </button>
+                          <Link to={`/dashboard/payment/${user?._id}`}>
+                            <button
+                              className="mx-auto block w-full select-none rounded-lg bg-blue-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                              data-ripple-light="true">
+                              Pay
+                            </button>
+                          </Link>
                         ) : (
                           <button
                             className="mx-auto block w-full select-none rounded-lg bg-blue-500 hover:rounded-3xl py-2 px-5 normal-case text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -101,9 +101,11 @@ const Booking = () => {
                       </th>
                       <th>
                         {user?.status === "In Review" && (
-                          <button onClick={()=>handleDeleteBooking(user?._id)} className="btn rounded-full bg-red-400 hover:bg-red-300">
-                          <RxCross1 className="text-base"></RxCross1>
-                        </button>
+                          <button
+                            onClick={() => handleDeleteBooking(user?._id)}
+                            className="btn rounded-full bg-red-400 hover:bg-red-300">
+                            <RxCross1 className="text-base"></RxCross1>
+                          </button>
                         )}
                       </th>
                     </tr>

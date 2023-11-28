@@ -3,6 +3,10 @@ import Navber from "../Component/Navber";
 
 
 const Layout = () => {
+
+    
+ 
+
     return (
         <div>
             <header>
@@ -14,6 +18,7 @@ const Layout = () => {
             <footer>
                 
             </footer>
+            
         </div>
     );
 };

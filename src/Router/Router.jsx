@@ -23,6 +23,7 @@ import AllPackages from "../Pages/AllPackages/AllPackages";
 import TouristStoryDetails from "../Pages/Home/TouristStory/TouristStoryDetails";
 import AllStory from "../Pages/AllStory.jsx/AllStory";
 import TourTypeDetails from "../Pages/Home/TourType/TourTypeDetails";
+import Payment from "../Pages/Payment/Payment";
 
 
 const Router = createBrowserRouter([
@@ -117,6 +118,10 @@ const Router = createBrowserRouter([
           {
             path: '/dashboard/manageUser',
             element: <PrivateRoute><ManageUser></ManageUser></PrivateRoute>
+          },
+          {
+            path: '/dashboard/payment/:id',
+            element: <Payment></Payment>
           },
         ]
       }
