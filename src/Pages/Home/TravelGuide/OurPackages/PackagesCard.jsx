@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import useAuth from "../../../../Hooks/useAuth";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import useUserInfo from "../../../../Hooks/useUserInfo";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const PackagesCard = ({ packageInfo }) => {
   const { user } = useAuth();
   const [userInfo] = useUserInfo();
-  const axiosSecure = useAxiosPublic();
+  const axiosSecure = useAxiosSecure()
   const { about, image, price, tour_type, trip_title, _id } = packageInfo || {};
 
   const handleWishlist = (id) => {
@@ -34,7 +34,7 @@ const PackagesCard = ({ packageInfo }) => {
     <div className="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg ">
       <div className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
         <img
-          className="h-60 object-cover"
+          className="min-h-[230px] w-full object-cover"
           src={image}
           alt="ui/ux review check"
         />

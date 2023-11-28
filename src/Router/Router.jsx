@@ -22,6 +22,7 @@ import ManageUser from "../Pages/Dashboard/AdminSection/ManageUser";
 import AllPackages from "../Pages/AllPackages/AllPackages";
 import TouristStoryDetails from "../Pages/Home/TouristStory/TouristStoryDetails";
 import AllStory from "../Pages/AllStory.jsx/AllStory";
+import TourTypeDetails from "../Pages/Home/TourType/TourTypeDetails";
 
 
 const Router = createBrowserRouter([
@@ -76,6 +77,10 @@ const Router = createBrowserRouter([
       {
         path: "/allStory",
         element: <AllStory></AllStory>
+      },
+      {
+        path: "/tourType/:type",
+        element: <TourTypeDetails></TourTypeDetails>
       },
       {
         path: '/dashboard',
