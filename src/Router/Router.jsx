@@ -20,6 +20,8 @@ import AdminProfile from "../Pages/Dashboard/AdminSection/AdminProfile";
 import AddPackage from "../Pages/Dashboard/AdminSection/AddPackage";
 import ManageUser from "../Pages/Dashboard/AdminSection/ManageUser";
 import AllPackages from "../Pages/AllPackages/AllPackages";
+import TouristStoryDetails from "../Pages/Home/TouristStory/TouristStoryDetails";
+import AllStory from "../Pages/AllStory.jsx/AllStory";
 
 
 const Router = createBrowserRouter([
@@ -66,6 +68,14 @@ const Router = createBrowserRouter([
       {
         path: "/tourGuideProfile/:id",
         element: <PrivateRoute><TourGuidesProfile></TourGuidesProfile></PrivateRoute>
+      },
+      {
+        path: "/storyDetails/:id",
+        element: <TouristStoryDetails></TouristStoryDetails>
+      },
+      {
+        path: "/allStory",
+        element: <AllStory></AllStory>
       },
       {
         path: '/dashboard',

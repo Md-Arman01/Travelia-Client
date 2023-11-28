@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const TouristStoryCard = ({ story }) => {
-  const { provider_name, provider_image, tour_place, story_image , _id} =
+  const { provider_name, provider_image, tour_place, story_image, _id } =
     story || {};
   const dynamicStyles = {
     backgroundImage: `url('${story_image}')`,
@@ -27,7 +27,7 @@ const TouristStoryCard = ({ story }) => {
             <img
               alt="tania andrew"
               src={provider_image}
-              className="relative inline-block h-[74px] w-[74px] rounded-full  object-cover object-center"
+              className="relative inline-block outline outline-offset-4 outline-blue-500 md:h-[74px] md:w-[74px]  rounded-full  object-cover object-center"
             />
           </div>
         </div>
