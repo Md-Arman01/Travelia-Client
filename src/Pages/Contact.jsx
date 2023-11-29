@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <Container>
       <div>
-      <div className="flex flex-col-reverse lg:flex-row min-h-[680px]  pt-20  justify-center items-center gap-5 md:gap-20 lg:gap-40  my-10 lg:my-0">
+      <div className="flex flex-col-reverse lg:flex-row min-h-[680px]  pt-32  justify-center items-center gap-5 md:gap-20 lg:gap-40  my-10 lg:my-0">
       <div>
           <img
             className="w-[500px] lg:w-[700px] "
