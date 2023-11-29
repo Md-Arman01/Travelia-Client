@@ -6,6 +6,7 @@ import Rating from "react-rating";
 import useAuth from "../../../../Hooks/useAuth";
 import { useRef } from "react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const TourGuidesProfile = () => {
   const star = useRef();
@@ -64,6 +65,9 @@ const TourGuidesProfile = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>Travelia | TourGuide | Details_{id}</title>
+      </Helmet>
       <div className="my-10">
         <h1 className="border-b-4 border-orange-400 w-fit mx-auto text-5xl font-semibold font-Rancho bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text">
           Tour Guide Profile

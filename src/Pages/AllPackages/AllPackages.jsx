@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Container from "../../Component/Container";
 import useAllPackages from "../../Hooks/useAllPackages";
 import PackagesCard from "../Home/TravelGuide/OurPackages/PackagesCard";
@@ -9,6 +10,9 @@ const AllPackages = () => {
 
   return (
     <div  className="my-10">
+      <Helmet>
+        <title>Travelia | AllPackage</title>
+      </Helmet>
       <Container>
         <div>
           <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">

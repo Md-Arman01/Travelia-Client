@@ -91,8 +91,8 @@ const CheckoutForm = ({ id }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="flex justify-center mt-32">
+      <form onSubmit={handleSubmit} className="w-[500px]">
         <CardElement
           options={{
             style: {
@@ -110,10 +110,10 @@ const CheckoutForm = ({ id }) => {
           }}
         />
         <button
-          className="btn btn-circle w-20 bg-blue-700"
+          className="mx-auto w-36 block select-none rounded-lg mt-10 bg-gradient-to-tr from-[#287eff] to-[#0447ff] bg-clip-border hover:rounded-3xl py-2.5 px-7 text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="submit"
           disabled={!stripe || !clientSecret}>
-          Pay
+          Pay {totalPrice}$
         </button>
       </form>
     </div>

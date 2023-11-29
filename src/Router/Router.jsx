@@ -106,23 +106,23 @@ const Router = createBrowserRouter([
           },
           {
             path: '/dashboard/tourGuideProfile',
-            element: <TourGuideRoute><TourGuideProfile></TourGuideProfile></TourGuideRoute>
+            element: <PrivateRoute><TourGuideRoute><TourGuideProfile></TourGuideProfile></TourGuideRoute></PrivateRoute>
           },
           {
             path: '/dashboard/tourGuideAssigned',
-            element: <TourGuideRoute><TourGuideAssigned></TourGuideAssigned></TourGuideRoute>
+            element: <PrivateRoute><TourGuideRoute><TourGuideAssigned></TourGuideAssigned></TourGuideRoute></PrivateRoute>
           },
           {
             path: '/dashboard/adminProfile',
-            element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
+            element: <PrivateRoute><AdminRoute><AdminProfile></AdminProfile></AdminRoute></PrivateRoute>
           },
           {
             path: '/dashboard/addPackage',
-            element: <AdminRoute><AddPackage></AddPackage></AdminRoute>
+            element: <PrivateRoute><AdminRoute><AddPackage></AddPackage></AdminRoute></PrivateRoute>
           },
           {
             path: '/dashboard/manageUser',
-            element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
+            element: <PrivateRoute><AdminRoute><ManageUser></ManageUser></AdminRoute></PrivateRoute>
           },
           {
             path: '/dashboard/payment/:id',

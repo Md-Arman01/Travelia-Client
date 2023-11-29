@@ -8,6 +8,7 @@ import {
   TwitterShareButton,
 } from "react-share";
 import useAuth from "../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const StoryDetails = ({ storyDetails }) => {
   const { user } = useAuth();
@@ -23,6 +24,9 @@ const StoryDetails = ({ storyDetails }) => {
 
   return (
     <div className="mb-10">
+      <Helmet>
+        <title>Travelia | StoryDetails</title>
+      </Helmet>
       <div>
         <img className="w-full rounded-lg" src={story_image} alt="" />
         <div className="mt-10 mb-5 flex gap-5">

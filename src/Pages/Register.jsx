@@ -10,6 +10,7 @@ import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.confiq";
 import GoogleSignIn from "../Component/GoogleSignIn";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 const image_bb_API = import.meta.env.VITE_IMAGE_API;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_bb_API}`;
 
@@ -88,6 +89,9 @@ const Register = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>Travelia | Sign Up</title>
+      </Helmet>
       <div className="flex items-center justify-center gap-10">
         <div>
           <div className=" flex justify-center mt-14 md:mt-20 lg:mt-28 px-5 md:px-0 w-[400px]">
@@ -215,7 +219,7 @@ const Register = () => {
                 <div className="p-6 pt-0">
                   <button
                     disabled={disable}
-                    className="hover:translate-y-1 block w-full select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-3 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    className="hover:rounded-3xl block w-full select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-3 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                     type="submit"
                     data-ripple-light="true">
                     Sign Up

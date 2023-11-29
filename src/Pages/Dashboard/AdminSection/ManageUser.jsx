@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import useAllUsers from "../../../Hooks/useAllUsers";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageUser = () => {
@@ -37,6 +38,9 @@ const ManageUser = () => {
   return (
     <>
       <div>
+      <Helmet>
+        <title>Travelia | Manage User</title>
+      </Helmet>
         <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
           Manage User
         </h1>

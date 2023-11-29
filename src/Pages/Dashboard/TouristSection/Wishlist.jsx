@@ -4,6 +4,7 @@ import useAuth from "../../../Hooks/useAuth";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Wishlist = () => {
   const axiosSecure = useAxiosSecure();
@@ -30,6 +31,9 @@ const Wishlist = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Travelia | Wishlist</title>
+      </Helmet>
       <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
         My Wishlist
       </h1>

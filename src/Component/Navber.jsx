@@ -115,7 +115,7 @@ const Navber = () => {
             ) : (
               <NavLink to="/signIn">
                 <button
-                  className="hover:translate-y-1  block w-full select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-1 px-8 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                  className="hover:rounded-3xl  block w-full select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-2 px-8 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                   data-ripple-light="true">
                   Sign In
                 </button>

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const TourGuideAssigned = () => {
   const axiosSecure = useAxiosSecure();
@@ -49,6 +50,9 @@ const TourGuideAssigned = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Travelia | TourGuide | Assign</title>
+      </Helmet>
       <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
         Assigned Tour
       </h1>

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import GoogleSignIn from "../Component/GoogleSignIn";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { loginUser } = useAuth();
@@ -35,6 +36,9 @@ const Login = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>Travelia | Sign In</title>
+      </Helmet>
       <div className="flex items-center justify-center gap-10">
         <div>
           <img
@@ -89,7 +93,7 @@ const Login = () => {
                 </div>
                 <div className="p-6 pt-0">
                   <button
-                    className="hover:translate-y-1 block w-full select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-3 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    className="hover:rounded-3xl block w-full select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-3 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                     type="submit"
                     data-ripple-light="true">
                     Sign In

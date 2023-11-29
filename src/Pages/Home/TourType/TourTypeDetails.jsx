@@ -3,6 +3,7 @@ import Container from "../../../Component/Container";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import PackagesCard from "../TravelGuide/OurPackages/PackagesCard";
+import { Helmet } from "react-helmet-async";
 
 const TourTypeDetails = () => {
   const { type } = useParams();
@@ -19,6 +20,9 @@ const TourTypeDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Travelia | TourType | Details</title>
+      </Helmet>
       <Container>
         <div>
           <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">

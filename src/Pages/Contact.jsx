@@ -2,10 +2,14 @@ import Container from "../Component/Container";
 import { BiSolidUser , BiSolidPencil } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { BsSend } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
   return (
     <Container>
+      <Helmet>
+        <title>Travelia | Contact</title>
+      </Helmet>
       <div>
       <div className="flex flex-col-reverse lg:flex-row min-h-[680px]  pt-32  justify-center items-center gap-5 md:gap-20 lg:gap-40  my-10 lg:my-0">
       <div>

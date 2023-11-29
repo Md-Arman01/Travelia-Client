@@ -7,6 +7,7 @@ import TourPlan from "./TourPlan";
 import TourGuides from "../../TourGuides/TourGuides";
 import BookingForm from "./BookingForm";
 import Gallery from "./Gallery";
+import { Helmet } from "react-helmet-async";
 
 const PackageDetails = () => {
   const axiosPublic = useAxiosPublic();
@@ -22,6 +23,9 @@ const PackageDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Travelia | Package_{id}</title>
+      </Helmet>
       {packageDetails?.map((item) => (
         <div key={item._id}>
           <Container>

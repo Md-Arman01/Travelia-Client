@@ -2,11 +2,15 @@ import { BsFacebook } from "react-icons/bs";
 import useAuth from "../../../Hooks/useAuth";
 import { FaTwitter } from "react-icons/fa6";
 import { AiFillInstagram } from "react-icons/ai";
+import { Helmet } from "react-helmet-async";
 
 const AdminProfile = () => {
   const { user } = useAuth();
   return (
     <div>
+      <Helmet>
+        <title>Travelia | Admin_Profile</title>
+      </Helmet>
       <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
         My Profile
       </h1>

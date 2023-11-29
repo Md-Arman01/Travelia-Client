@@ -3,12 +3,12 @@ import useAuth from "../../../../Hooks/useAuth";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import useUserInfo from "../../../../Hooks/useUserInfo";
-import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 
 const PackagesCard = ({ packageInfo }) => {
   const { user } = useAuth();
   const [userInfo] = useUserInfo();
-  const axiosSecure = useAxiosSecure()
+  const axiosPublic = useAxiosPublic()
   const { about, image, price, tour_type, trip_title, _id } = packageInfo || {};
 
   const handleWishlist = (id) => {
@@ -23,7 +23,7 @@ const PackagesCard = ({ packageInfo }) => {
       trip_title: trip_title,
       price: price,
     };
-    axiosSecure.post("/wishlist", wishlistData).then((res) => {
+    axiosPublic.post("/wishlist", wishlistData).then((res) => {
       if (res?.status === 200) {
         toast.success("Wishlist Added!", { id: toastId });
       }
