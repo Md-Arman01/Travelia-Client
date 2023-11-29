@@ -134,7 +134,7 @@ const TourGuidesProfile = () => {
             />
           </div>
         </div>
-        <div className="border-2 rounded-2xl p-5">
+        <div className="shadow-lg rounded-2xl p-10">
           <div className="rounded-xl shadow-xl p-5">
             <div>
               <h1 className="text-2xl font-semibold mb-5">Comment please</h1>
