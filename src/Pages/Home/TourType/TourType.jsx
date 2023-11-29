@@ -11,6 +11,7 @@ const TourType = () => {
         <div className="hero-overlay bg-opacity-70"></div>
         <div className="hero-content text-center text-neutral-content  md:h-[400px]">
           <div className="">
+            <p className="font-Lora font-semibold text-lg">--- Find a tour by ---</p>
             <h1 className="mb-10 text-5xl font-Rancho font-semibold">
               Tour Type
             </h1>

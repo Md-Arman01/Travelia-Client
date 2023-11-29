@@ -10,27 +10,26 @@ import useUserInfo from "../Hooks/useUserInfo";
 
 const Navber = () => {
   const { user, logoutUser, setUser } = useAuth();
-  const [userInfo] = useUserInfo()
+  const [userInfo] = useUserInfo();
   const { displayName, photoURL, email } = user || {};
   const menuItems = <MenuItems></MenuItems>;
-  
 
   const handleLogout = () => {
-    const toastId = toast.loading('Sign Outing...')
+    const toastId = toast.loading("Sign Outing...");
     logoutUser()
       .then(() => {
         // Sign-out successful.
         setUser();
-        toast.success('Sign Out Successfully!', { id: toastId })
+        toast.success("Sign Out Successfully!", { id: toastId });
       })
       .catch((error) => {
         const errorCode = error.code;
-        toast.error( errorCode , {id: toastId})
+        toast.error(errorCode, { id: toastId });
       });
   };
 
   return (
-    <div className="inset-0 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
+    <div className="fixed top-o z-50 h-fit inset-0 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
       {/* ----------- */}
       <Container>
         <div className="navbar">
@@ -45,12 +44,14 @@ const Navber = () => {
                 {menuItems}
               </ul>
             </div>
-            <div className=" flex flex-col items-center">
-              <img className="w-16" src={logo} alt="" />
-              <h1 className="text-2xl font-Rancho font-semibold -mt-3">
-                Travelia
-              </h1>
-            </div>
+            <Link to='/'>
+              <div className="hover:cursor-pointer flex flex-col items-center">
+                <img className="w-16" src={logo} alt="" />
+                <h1 className="text-2xl font-Rancho font-semibold -mt-3">
+                  Travelia
+                </h1>
+              </div>
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
@@ -73,29 +74,34 @@ const Navber = () => {
                     tabIndex={0}
                     className="dropdown-content z-[1] menu p-5 text-center shadow bg-base-100 rounded-box min-w-[250px] space-y-3">
                     <div>
-                      <h1 className="text-xl font-semibold py-2">{displayName}</h1>
+                      <h1 className="text-xl font-semibold py-2">
+                        {displayName}
+                      </h1>
                       <h1 className="text-xs pb-2 text-gray-400">{email}</h1>
                       <hr />
                     </div>
                     <div>
-                      {
-                        user && userInfo?.role === 'Tourist' && 
-                              <Link to='/dashboard/touristProfile'>
-                                <h1 className="text-lg font-medium hover:cursor-pointer">Dashboard</h1>
-                              </Link>
-                      }
-                      {
-                        user && userInfo?.role === 'Tour Guide' &&
-                        <Link to='/dashboard/tourGuideProfile'>
-                        <h1 className="text-lg font-medium hover:cursor-pointer">Dashboard</h1>
+                      {user && userInfo?.role === "Tourist" && (
+                        <Link to="/dashboard/touristProfile">
+                          <h1 className="text-lg font-medium hover:text-gray-600 hover:cursor-pointer">
+                            Dashboard
+                          </h1>
                         </Link>
-                      }
-                      {
-                        user && userInfo?.role === 'Admin' &&
-                        <Link to='/dashboard/adminProfile'>
-                        <h1 className="text-lg font-medium hover:cursor-pointer">Dashboard</h1>
+                      )}
+                      {user && userInfo?.role === "Tour Guide" && (
+                        <Link to="/dashboard/tourGuideProfile">
+                          <h1 className="text-lg font-medium hover:text-gray-600 hover:cursor-pointer">
+                            Dashboard
+                          </h1>
                         </Link>
-                      }
+                      )}
+                      {user && userInfo?.role === "Admin" && (
+                        <Link to="/dashboard/adminProfile">
+                          <h1 className="text-lg font-medium hover:text-gray-600 hover:cursor-pointer">
+                            Dashboard
+                          </h1>
+                        </Link>
+                      )}
                     </div>
                     <div
                       onClick={handleLogout}

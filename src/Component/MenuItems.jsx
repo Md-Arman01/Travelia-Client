@@ -9,7 +9,7 @@ const MenuItems = () => {
           className={({ isActive }) =>
             isActive
               ? "text-[#FF4804] underline underline-offset-8 text-lg font-medium"
-              : "text-lg font-medium  hover:text-[#FF4804] hover:underline hover:underline-offset-8"
+              : "text-lg font-medium hover:scale-110 hover:transition-all  hover:text-[#FF4804] hover:underline hover:underline-offset-8"
           }>
           Home
         </NavLink>
@@ -18,7 +18,7 @@ const MenuItems = () => {
           className={({ isActive }) =>
             isActive
               ? "text-[#FF4804] underline underline-offset-8 text-lg font-medium"
-              : "text-lg font-medium  hover:text-[#FF4804] hover:underline hover:underline-offset-8"
+              : "text-lg font-medium hover:scale-110 hover:transition-all  hover:text-[#FF4804] hover:underline hover:underline-offset-8"
           }>
           Community
         </NavLink>
@@ -27,7 +27,7 @@ const MenuItems = () => {
           className={({ isActive }) =>
             isActive
               ? "text-[#FF4804] underline underline-offset-8 text-lg font-medium"
-              : "text-lg font-medium  hover:text-[#FF4804] hover:underline hover:underline-offset-8"
+              : "text-lg font-medium hover:scale-110 hover:transition-all  hover:text-[#FF4804] hover:underline hover:underline-offset-8"
           }>
           Blogs
         </NavLink>
@@ -36,7 +36,7 @@ const MenuItems = () => {
           className={({ isActive }) =>
             isActive
               ? "text-[#FF4804] underline underline-offset-8 text-lg font-medium"
-              : "text-lg font-medium  hover:text-[#FF4804] hover:underline hover:underline-offset-8"
+              : "text-lg font-medium hover:scale-110 hover:transition-all  hover:text-[#FF4804] hover:underline hover:underline-offset-8"
           }>
           About Us
         </NavLink>
@@ -45,7 +45,7 @@ const MenuItems = () => {
           className={({ isActive }) =>
             isActive
               ? "text-[#FF4804] underline underline-offset-8 text-lg font-medium"
-              : "text-lg font-medium hover:text-[#FF4804] hover:underline hover:underline-offset-8"
+              : "text-lg font-medium hover:scale-110 hover:transition-all hover:text-[#FF4804] hover:underline hover:underline-offset-8"
           }>
           Contact Us
         </NavLink>

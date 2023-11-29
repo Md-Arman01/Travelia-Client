@@ -28,22 +28,22 @@ const Footer = () => {
             <header className="footer-title text-gray-900">Services</header>
             <Link
               to="/allStory"
-              className="text-gray-500 hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
+              className="text-gray-500 hover:translate-x-1 hover:transition-all hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
               Travel Compass
             </Link>
             <Link
               to="/allPackages"
-              className="text-gray-500 hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
+              className="text-gray-500 hover:translate-x-1 hover:transition-all hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
               Explore Package
             </Link>
             <Link
               to="/"
-              className="text-gray-500 hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
+              className="text-gray-500 hover:translate-x-1 hover:transition-all hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
               Tour Trekker
             </Link>
             <Link
               to=""
-              className="text-gray-500 hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
+              className="text-gray-500 hover:translate-x-1 hover:transition-all hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
               Discover Dynasty
             </Link>
           </nav>
@@ -51,22 +51,22 @@ const Footer = () => {
             <header className="footer-title text-gray-900">Company</header>
             <Link
               to="/about"
-              className="text-gray-500 hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
+              className="text-gray-500 hover:translate-x-1 hover:transition-all hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
               About us
             </Link>
             <Link
               to="/contact"
-              className="text-gray-500 hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
+              className="text-gray-500 hover:translate-x-1 hover:transition-all hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
               Contact us
             </Link>
             <Link
               to="/blogs"
-              className="text-gray-500 hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
+              className="text-gray-500 hover:translate-x-1 hover:transition-all hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
               Blogs
             </Link>
             <Link
               to="/community"
-              className="text-gray-500 hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
+              className="text-gray-500 hover:translate-x-1 hover:transition-all hover:cursor-pointer hover:underline hover:text-[#FF4804] ">
               Community
             </Link>
           </nav>
@@ -76,9 +76,9 @@ const Footer = () => {
             </header>
             <div className="w-full">
               <div className="flex justify-center items-center gap-2">
-                <BsFacebook className="text-2xl text-[#2B92EA] hover:cursor-pointer" />
-                <FaTwitter className="text-2xl text-[#1AACF0] hover:cursor-pointer" />
-                <AiFillInstagram className="text-3xl text-[#A43EB7] hover:cursor-pointer" />
+                <BsFacebook className="text-2xl text-[#2B92EA] hover:cursor-pointer hover:scale-110" />
+                <FaTwitter className="text-2xl text-[#1AACF0] hover:cursor-pointer hover:scale-110" />
+                <AiFillInstagram className="text-3xl text-[#A43EB7] hover:cursor-pointer hover:scale-110" />
               </div>
             </div>
             <div className="flex gap-5 mt-5">

@@ -13,7 +13,7 @@ const Layout = () => {
             <header>
                 <Navber></Navber>
             </header>
-            <main>
+            <main className="mt-[103px]">
                 <Outlet></Outlet>
             </main>
             <Footer></Footer>
