@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MdKeyboardDoubleArrowUp } from "react-icons/md";
+import { RxDoubleArrowUp } from "react-icons/rx";
 import Container from "./Container";
 
 const GotoTop = () => {
@@ -32,9 +32,9 @@ const GotoTop = () => {
       <div className="flex justify-end hover:cursor-pointer">
         {isVisible && (
           <div
-            className="z-50 bg-gradient-to-tr from-[#FFA828] to-[#FF4804] bg-clip-border rounded-full w-fit p-1"
+            className="z-50  bg-orange-500 hover:bg-black rounded-lg w-fit p-3"
             onClick={goToBtn}>
-            <MdKeyboardDoubleArrowUp className="animate-bounce transition-transform text-[40px] text-white" />
+            <RxDoubleArrowUp className="text-[25px] text-white"  />
           </div>
         )}
       </div>

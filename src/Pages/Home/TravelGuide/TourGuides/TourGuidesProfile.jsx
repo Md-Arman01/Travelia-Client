@@ -7,6 +7,7 @@ import useAuth from "../../../../Hooks/useAuth";
 import { useRef } from "react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 
 const TourGuidesProfile = () => {
   const star = useRef();
@@ -16,28 +17,28 @@ const TourGuidesProfile = () => {
   const axiosPublic = useAxiosPublic();
 
   // guide
-  const {data: singleUserInfo} = useQuery({
-      queryKey:['singleUserInfo'],
-      queryFn: async()=>{
-        const res = await axiosSecure.get(`/users2/${id}`)
-        return res?.data
-      }
-    })
+  const { data: singleUserInfo } = useQuery({
+    queryKey: ["singleUserInfo"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users2/${id}`);
+      return res?.data;
+    },
+  });
   const [cardInfo] = singleUserInfo || [];
 
   // all comments
   const { data: tourGuideComments, refetch } = useQuery({
     queryKey: ["tourGuideComments", cardInfo?.user_email],
     queryFn: async () => {
-      const res = await axiosPublic.get(
-        `/comments/${cardInfo?.user_email}`
-      );
+      const res = await axiosPublic.get(`/comments/${cardInfo?.user_email}`);
       return res?.data;
     },
-  })
-  const totalRatings = tourGuideComments?.reduce((totalRating, rat) => totalRating + rat?.rating,0)
-  const ratings = totalRatings / tourGuideComments?.length || 2
-
+  });
+  const totalRatings = tourGuideComments?.reduce(
+    (totalRating, rat) => totalRating + rat?.rating,
+    0
+  );
+  const ratings = totalRatings / tourGuideComments?.length || 2;
 
   // add comment
   const handleComment = (e) => {
@@ -55,8 +56,16 @@ const TourGuidesProfile = () => {
     };
 
     axiosSecure.post("/comments", commentInfo).then((res) => {
-      if (res?.status === 200) {
+      if (res?.data?._id) {
         refetch();
+        toast("Thanks for your feedback!", {
+          icon: "👏",
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
       }
     });
 
@@ -68,7 +77,7 @@ const TourGuidesProfile = () => {
       <Helmet>
         <title>Travelia | TourGuide | Details_{id}</title>
       </Helmet>
-      <div className="my-10">
+      <div className="pt-5 md:pt-10 mb-5 md:mb-10">
         <h1 className="border-b-4 border-orange-400 w-fit mx-auto text-5xl font-semibold font-Rancho bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text">
           Tour Guide Profile
         </h1>
@@ -128,12 +137,18 @@ const TourGuidesProfile = () => {
         <div className="border-2 rounded-2xl p-5">
           <div className="rounded-xl shadow-xl p-5">
             <div>
-              <h1 className="text-2xl font-semibold mb-5">Comments</h1>
+              <h1 className="text-2xl font-semibold mb-5">Comment please</h1>
             </div>
             <div className="flex items-center gap-5">
               <div className="avatar">
                 <div className="w-14 h-14 rounded-full">
-                  <img src={user?.photoURL ? user?.photoURL : 'https://i.ibb.co/B6Y4mgL/user.png'} />
+                  <img
+                    src={
+                      user?.photoURL
+                        ? user?.photoURL
+                        : "https://i.ibb.co/B6Y4mgL/user.png"
+                    }
+                  />
                 </div>
               </div>
               <div className="flex-1">
@@ -173,31 +188,33 @@ const TourGuidesProfile = () => {
                         />
                       </div>
                     </div>
-                    {
-                      user?.email ?
+                    {user?.email ? (
                       <button
-                      type="submit"
-                      className="hover:rounded-3xl block w-20 select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-2 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                      data-ripple-light="true">
-                      Send
-                    </button>
-                    :
-                    <button
-                      type="submit"
-                      disabled
-                      className="hover:rounded-3xl block w-20 select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-2 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                      data-ripple-light="true">
-                      Send
-                    </button>
-
-                    }
-                    
+                        type="submit"
+                        className="hover:rounded-3xl block w-20 select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-2 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true">
+                        Send
+                      </button>
+                    ) : (
+                      <button
+                        type="submit"
+                        disabled
+                        className="hover:rounded-3xl block w-20 select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] py-2 px-6 text-center align-middle font-Rancho text-xl  text-white shadow-md shadow-[#FFA828]/20 transition-all hover:shadow-lg hover:shadow-[#FFA828]/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true">
+                        Send
+                      </button>
+                    )}
                   </div>
                 </form>
               </div>
             </div>
           </div>
           <div className="mt-10">
+            <div>
+              <h1 className="text-2xl font-semibold mb-5">
+                {tourGuideComments?.length} Comments
+              </h1>
+            </div>
             {tourGuideComments?.map((comments) => (
               <div key={comments?._id}>
                 <div className="flex gap-3 mb-3">
@@ -207,7 +224,9 @@ const TourGuidesProfile = () => {
                     </div>
                   </div>
                   <div>
-                    <h1 className="text-xs font-semibold mb-1">{comments?.user_email}</h1>
+                    <h1 className="text-xs font-semibold mb-1">
+                      {comments?.user_email}
+                    </h1>
                     <div>
                       <Rating
                         emptySymbol={
@@ -230,7 +249,9 @@ const TourGuidesProfile = () => {
                         readonly
                       />
                     </div>
-                    <h1 className="text-base font-medium text-gray-500">{comments?.comment}</h1>
+                    <h1 className="text-base font-medium text-gray-500">
+                      {comments?.comment}
+                    </h1>
                   </div>
                 </div>
               </div>

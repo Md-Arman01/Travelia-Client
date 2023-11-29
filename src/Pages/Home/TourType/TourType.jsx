@@ -4,7 +4,7 @@ const TourType = () => {
   return (
     <div className="my-20">
       <div
-        className="hero "
+        className="hero  bg-fixed"
         style={{
           backgroundImage: "url(https://i.ibb.co/27rwCNd/Screenshot-186.png)",
         }}>
