@@ -30,11 +30,11 @@ const Navber = () => {
   };
 
   return (
-    <div className="sticky top-0 inset-0 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
+    <div className="inset-0 border border-white/80 bg-white bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200 ">
       {/* ----------- */}
       <Container>
         <div className="navbar">
-          <div className="navbar-start">
+          <div className="navbar-start ">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
                 <FiMenu className="text-3xl"></FiMenu>

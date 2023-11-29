@@ -15,7 +15,7 @@ const Dashboard = () => {
       <Container>
         <div className="flex">
           {/* dashboard menu */}
-          <div className="w-72 min-h-screen bg-gray-700 flex flex-col items-center gap-3 px-5">
+          <div className="w-72 min-h-screen  -mb-20 bg-gray-700 flex flex-col items-center gap-3 px-5">
             <h1 className="bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text text-5xl font-semibold font-Rancho mt-8 mb-3">Travelia</h1>
             <p className="border-b-2 border-white w-full"> </p>
             {
