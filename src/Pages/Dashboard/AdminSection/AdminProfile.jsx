@@ -11,7 +11,7 @@ const AdminProfile = () => {
       <Helmet>
         <title>Travelia | Admin_Profile</title>
       </Helmet>
-      <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
+      <h1 className="text-center mb-10 md:my-10 text-3xl md:text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
         My Profile
       </h1>
       <div className="flex justify-center">

@@ -13,27 +13,27 @@ const Contact = () => {
       </Helmet>
       {/* banner */}
       <div
-        className="hero md:h-[500px] bg-fixed"
+        className="hero  h-[300px] md:h-[500px] bg-fixed"
         style={{
           backgroundImage: "url(https://i.ibb.co/fqjZcHL/Screenshot-216.png)",
         }}>
         <div className="hero-overlay bg-opacity-75"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md mb-10">
-            <h1 className="font-extrabold text-6xl">Contact Us</h1>
+            <h1 className="font-extrabold text-4xl lg:text-6xl">Contact Us</h1>
             <p className="md:w-64 border-4 border-orange-600 mt-1"></p>
           </div>
         </div>
       </div>
       {/* contact info */}
       <Container>
-        <div className="flex items-center gap-5 my-20">
+        <div className="flex flex-col lg:flex-row items-center gap-5 my-10 lg:my-20 px-5 lg:px-0">
           {/* left side */}
           <div className="flex-1">
-            <h1 className="text-4xl font-semibold mb-3">
+            <h1 className="text-2xl md:text-4xl font-semibold mb-3">
               We'd Love to Hear from You
             </h1>
-            <p className="text-base font-medium font-sans text-gray-500 mb-10 w-[600px]">
+            <p className="text-base font-medium font-sans text-gray-500 mb-10 md:w-[600px]">
               Please do not hesitate to contact us if you have any queries or
               complaints concerning our directory website. Our customer service
               team is here to help and may be reached via phone, email, or
@@ -76,7 +76,7 @@ const Contact = () => {
           </div>
           {/* right side */}
           <div className="flex-1">
-            <div className="shadow-lg  p-20 rounded-xl">
+            <div className="shadow-lg p-8 md:p-10 lg:p-20 rounded-xl">
               <div>
                 <div className="grid gap-5">
                   <div className="flex w-full gap-5">

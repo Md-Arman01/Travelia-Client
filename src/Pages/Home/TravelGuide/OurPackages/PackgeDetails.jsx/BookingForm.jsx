@@ -58,7 +58,7 @@ const BookingForm = ({ item }) => {
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex flex-col lg:flex-row items-center">
       <div className="">
         <img
           className="w-[600px]"
@@ -149,7 +149,7 @@ const BookingForm = ({ item }) => {
               <input
                 type="file"
                 {...register("image", { required: true })}
-                className="file-input file-input-bordered w-full"
+                className="file-input file-input-bordered w-[130px] md:w-full"
               />
               {errors.image && (
                 <span className="text-red-400 text-xs">

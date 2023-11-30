@@ -27,7 +27,7 @@ const TouristStoryCard = ({ story }) => {
             <img
               alt="tania andrew"
               src={provider_image}
-              className="relative inline-block outline outline-offset-4 outline-blue-500 md:h-[74px] md:w-[74px]  rounded-full  object-cover object-center"
+              className="relative inline-block outline outline-offset-4 outline-blue-500 h-[60px] w-[60px] md:h-[74px] md:w-[74px]  rounded-full  object-cover object-center"
             />
           </div>
         </div>

@@ -30,28 +30,32 @@ const PackageDetails = () => {
         <div key={item._id}>
           <Container>
             {/* gallery */}
-            <Gallery></Gallery>
+            <div className="p-1">
+              <Gallery></Gallery>
+            </div>
 
             {/* Tour About Section */}
-            <div className="my-10">
-            <TourAbout item={item}></TourAbout>
+            <div className="my-10 px-5 lg:px-0">
+              <TourAbout item={item}></TourAbout>
             </div>
             {/* Tour plan */}
-            <div className="my-10">
-            <TourPlan item={item}></TourPlan>
+            <div className="my-10  px-5 lg:px-0">
+              <TourPlan item={item}></TourPlan>
             </div>
             {/* Tour Guides */}
-            <div  className="my-10">
-            <h1 className="border-b-4 border-orange-400 w-fit my-5 text-5xl font-Rancho font-semibold ">
-              Tour Guides :
-            </h1>
-            <TourGuides></TourGuides>
+            <div className="my-10  px-5 lg:px-0">
+              <h1 className="border-b-4 border-orange-400 w-fit my-5 text-5xl font-Rancho font-semibold ">
+                Tour Guides :
+              </h1>
+              <TourGuides></TourGuides>
             </div>
             {/* Booking Package Form */}
-            <h1 className="border-b-4 border-orange-400 w-fit my-5 text-5xl font-Rancho font-semibold ">
-              Booking Package :
-            </h1>
-            <BookingForm item={item}></BookingForm>
+            <div  className=" px-5 lg:px-0">
+              <h1 className="border-b-4 border-orange-400 w-fit my-5 text-4xl lg:text-5xl font-Rancho font-semibold ">
+                Booking Package :
+              </h1>
+              <BookingForm item={item}></BookingForm>
+            </div>
           </Container>
         </div>
       ))}

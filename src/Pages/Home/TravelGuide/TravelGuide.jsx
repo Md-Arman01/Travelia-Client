@@ -13,20 +13,20 @@ const TravelGuide = () => {
   return (
     <>
       <div>
-        <h1 className="text-6xl font-Rancho text-center my-10 bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text">
+        <h1 className="text-3xl md:text-4xl lg:text-6xl font-Rancho text-center my-5 md:my-10 bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text">
           Tourism and Travel Guide
         </h1>
       </div>
-      <div>
+      <div className="px-5 lg:px-0">
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <div className="flex justify-center my-2">
             <TabList>
-              <Tab><h1 className="text-2xl font-medium font-Rancho">Overview</h1></Tab>
-              <Tab><h1 className="text-2xl font-medium font-Rancho">Our Packages</h1></Tab>
-              <Tab><h1 className="text-2xl font-medium font-Rancho">Meet Our Tour Guides</h1></Tab>
+              <Tab><h1 className="md:text-2xl font-medium font-Rancho">Overview</h1></Tab>
+              <Tab><h1 className="md:text-2xl font-medium font-Rancho">Our Packages</h1></Tab>
+              <Tab><h1 className="md:text-2xl font-medium font-Rancho">Meet Our Tour Guides</h1></Tab>
             </TabList>
           </div>
-          <div className="border-2 rounded-2xl shadow-xl p-10 min-h-[500px]">
+          <div className="border-2 rounded-2xl shadow-xl p-5 md:p-10 min-h-[500px]">
           <TabPanel>
             <OverView></OverView>
           </TabPanel>

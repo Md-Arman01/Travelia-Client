@@ -11,14 +11,14 @@ const Community = () => {
       </Helmet>
       {/* banner */}
       <div
-        className="hero md:h-[500px] bg-fixed"
+        className="hero h-[300px] md:h-[500px] bg-fixed"
         style={{
           backgroundImage: "url(https://i.ibb.co/d20wXc9/Screenshot-236.png)",
         }}>
         <div className="hero-overlay bg-opacity-80"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className=" mb-10">
-            <h1 className="font-extrabold text-6xl">
+            <h1 className="font-extrabold text-4xl lg:text-6xl">
               Welcome to Travelia Community
             </h1>
             <p className="md:w-72 border-4 border-orange-600 mt-1"></p>
@@ -27,10 +27,10 @@ const Community = () => {
       </div>
       <Container>
         {/* 1st section */}
-        <h1 className="text-center text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit my-20 py-3">
+        <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit my-10 lg:my-20 py-3">
           Join Our Community of Passionate Anglers
         </h1>
-        <div className="flex items-center gap-10">
+        <div className="flex flex-col lg:flex-row items-center gap-10 px-5 lg:px-0">
           <div>
             <img
               className="rounded-xl"
@@ -113,20 +113,20 @@ const Community = () => {
           </div>
         </div>
         {/* 2nd section */}
-        <h1 className="text-center text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit my-20 py-3">
+        <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit my-10 lg:my-20 py-3">
           Meet With Our Best Guides
         </h1>
         <div>
           {/* 1st */}
-          <div className="flex">
-            <div className="w-1/2">
+          <div className="flex flex-col lg:flex-row px-5 lg:px-0">
+            <div className="lg:w-1/2">
               <img
                 className="h-full"
                 src="https://i.ibb.co/3SZs6SL/Screenshot-239.png"
                 alt=""
               />
             </div>
-            <div className="p-16 w-1/2 ">
+            <div className="p-4 md:p-8 lg:p-16  lg:w-1/2">
               <h1 className="text-4xl font-medium mb-1">Skott Brosnan</h1>
               <div className="flex  gap-2">
                 <Rating
@@ -151,7 +151,7 @@ const Community = () => {
                 />
                 <h1 className="text-sm  text-gray-500 ">Reviews 11</h1>
               </div>
-              <div className="flex items-center gap-16 my-3">
+              <div className="flex items-center gap-3 md:gap-16 my-3">
                 <div>
                   <h1 className="text-lg text-gray-500 font-light">
                     Guide Locations:
@@ -175,7 +175,7 @@ const Community = () => {
                 stories behind them.
               </p>
               <button
-                className={`block select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] bg-clip-border hover:rounded-3xl py-3 mt-10 px-7 text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
+                className={`block select-none rounded-lg bg-gradient-to-tr from-[#FFA828] to-[#FF4804] bg-clip-border hover:rounded-3xl py-3 mt-5 md:mt-10 px-7 text-center align-middle font-sans text-base font-semibold  text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
                 type="button"
                 data-ripple-light="true">
                 Email Guide
@@ -183,10 +183,10 @@ const Community = () => {
             </div>
           </div>
           {/* 2st */}
-          <div className="flex">
-            <div className="p-16 w-1/2 ">
+          <div className="flex flex-col-reverse lg:flex-row px-5 lg:px-0">
+            <div className="p-4 md:p-8 lg:p-16  lg:w-1/2">
               <h1 className="text-4xl font-medium mb-1">Alice Johnson</h1>
-              <div className="flex  gap-2">
+              <div className="flex gap-2">
                 <Rating
                   emptySymbol={
                     <svg
@@ -239,7 +239,7 @@ const Community = () => {
                 Email Guide
               </button>
             </div>
-            <div className="w-1/2">
+            <div className="lg:w-1/2">
               <img
                 className="h-full"
                 src="https://i.ibb.co/K00693k/Screenshot-238.png"
@@ -248,15 +248,15 @@ const Community = () => {
             </div>
           </div>
           {/* 3st */}
-          <div className="flex">
-            <div className="w-1/2">
+          <div className="flex flex-col lg:flex-row px-5 lg:px-0">
+            <div className="lg:w-1/2">
               <img
                 className="h-full"
                 src="https://i.ibb.co/ScXKGkt/Screenshot-240.png"
                 alt=""
               />
             </div>
-            <div className="p-16 w-1/2 ">
+            <div className="p-4 md:p-8 lg:p-16  lg:w-1/2">
               <h1 className="text-4xl font-medium mb-1">Charlie Davis</h1>
               <div className="flex  gap-2">
                 <Rating

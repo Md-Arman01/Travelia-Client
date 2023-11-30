@@ -7,7 +7,7 @@ const image_bb_API = import.meta.env.VITE_IMAGE_API;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_bb_API}`;
 
 const AddPackage = () => {
-    const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   const {
     register,
@@ -27,39 +27,35 @@ const AddPackage = () => {
     const image = res?.data?.data?.display_url;
 
     const packageData = {
-        image: image,
-        tour_type: data?.type,
-        trip_title: data?.title,
-        about: data?.about,
-        day_1: data?.day_1,
-        day_2: data?.day_2,
-        day_3: data?.day_3,
-        price: data?.price
-    }
-    axiosSecure.post('/packages', packageData)
-    .then(res => {
-        console.log(res?.data)
-        if(res?.data?.price){
-            reset()
-            toast.success("Package added Successfully!", { id: toastId });
-        }
-    })
-
-
-
+      image: image,
+      tour_type: data?.type,
+      trip_title: data?.title,
+      about: data?.about,
+      day_1: data?.day_1,
+      day_2: data?.day_2,
+      day_3: data?.day_3,
+      price: data?.price,
+    };
+    axiosSecure.post("/packages", packageData).then((res) => {
+      console.log(res?.data);
+      if (res?.data?.price) {
+        reset();
+        toast.success("Package added Successfully!", { id: toastId });
+      }
+    });
   };
 
   return (
     <>
       <div>
-      <Helmet>
-        <title>Travelia | Add Package</title>
-      </Helmet>
-        <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
+        <Helmet>
+          <title>Travelia | Add Package</title>
+        </Helmet>
+        <h1 className="text-center mb-10 md:my-10 text-3xl md:text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
           Add Package
         </h1>
       </div>
-      <div className="bg-[#F6F6F6] p-20 rounded-xl">
+      <div className="bg-[#F6F6F6] p-8 md:p-10 lg:p-20 rounded-xl">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* 1 */}

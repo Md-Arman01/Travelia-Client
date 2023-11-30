@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const MenuItems = () => {
   return (
     <div>
-      <div className="flex gap-5 items-center">
+      <div className="flex flex-col lg:flex-row gap-2 lg:gap-5 items-center">
         <NavLink
           to="/"
           className={({ isActive }) =>

@@ -52,10 +52,10 @@ const Profile = () => {
       <Helmet>
         <title>Travelia | Tourist Profile</title>
       </Helmet>
-      <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
+      <h1 className="text-center mb-5 lg:mb-10  md:my-10 text-3xl md:text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
         My Profile
       </h1>
-      <div className="flex items-center gap-5">
+      <div className="flex flex-col lg:flex-row items-center gap-5">
         {/* profile */}
         <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
           <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg h-80 rounded-xl bg-clip-border">
@@ -80,7 +80,7 @@ const Profile = () => {
           </div>
         </div>
         {/* form */}
-        <div className="flex items-center justify-center bg-[#F6F6F6] rounded-xl md:h-[540px] flex-1">
+        <div className="flex items-center justify-center bg-[#F6F6F6] rounded-xl w-full  lg:h-[540px] flex-1 py-10 lg:py-0">
           <div>
             <h1 className="text-4xl font-Rancho border-b-4 border-dashed w-fit pb-2 mx-auto mb-10">
               Add Story

@@ -14,11 +14,11 @@ const AllPackages = () => {
         <title>Travelia | AllPackage</title>
       </Helmet>
       <Container>
-        <div>
+        <div className="pt-5">
           <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
             All Packages
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-5 lg:px-0">
             {
                 packages?.map(packageInfo => <PackagesCard key={packageInfo?._id} packageInfo={packageInfo}></PackagesCard>)
             }

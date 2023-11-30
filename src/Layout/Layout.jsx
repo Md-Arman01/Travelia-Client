@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Navber from "../Component/Navber";
 import Footer from "../Pages/Home/Footer/Footer";
 import GotoTop from "../Component/GotoTop";
@@ -6,10 +6,11 @@ import { Helmet } from "react-helmet-async";
 
 const Layout = () => {
   return (
-    <div className="relative">
-        <Helmet>
-            <title>Travelia</title>
-        </Helmet>
+    <div className="relative overflow-x-hidden">
+      <ScrollRestoration />
+      <Helmet>
+        <title>Travelia</title>
+      </Helmet>
       <header>
         <Navber></Navber>
       </header>

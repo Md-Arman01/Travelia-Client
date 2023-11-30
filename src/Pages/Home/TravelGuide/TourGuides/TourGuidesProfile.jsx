@@ -82,7 +82,7 @@ const TourGuidesProfile = () => {
           Tour Guide Profile
         </h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 px-5 lg:px-0">
         <div className="relative flex flex-col text-gray-700 h-fit bg-white shadow-md  rounded-xl bg-clip-border">
           <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg rounded-xl bg-clip-border">
             <img
@@ -134,7 +134,7 @@ const TourGuidesProfile = () => {
             />
           </div>
         </div>
-        <div className="shadow-lg rounded-2xl p-10">
+        <div className="shadow-lg rounded-2xl p-5 md:p-10">
           <div className="rounded-xl shadow-xl p-5">
             <div>
               <h1 className="text-2xl font-semibold mb-5">Comment please</h1>

@@ -9,10 +9,10 @@ import { BsApple } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div className="bg-base-200 mt-6 md:mt-10 lg:mt-20">
+    <div className="bg-base-200 mt-6 md:mt-10 lg:mt-20 px-10 lg:px-0">
       <Container>
         <footer className="footer py-10 text-base-content">
-          <aside className="items-center grid-flow-col">
+          <aside>
             <div className=" flex flex-col items-center">
               <img className="w-16" src={logo} alt="" />
               <h1 className="text-2xl font-Rancho font-semibold -mt-3">
@@ -81,7 +81,7 @@ const Footer = () => {
                 <AiFillInstagram className="text-3xl text-[#A43EB7] hover:cursor-pointer hover:scale-110" />
               </div>
             </div>
-            <div className="flex gap-5 mt-5">
+            <div className="flex gap-5 md:gap-1 lg:gap-5 mt-5">
               <button className="btn glass bg-black  hover:bg-gray-700 normal-case text-white">
                 <IoLogoGooglePlaystore className="text-xl text-white "></IoLogoGooglePlaystore>
                 Google Play

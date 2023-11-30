@@ -33,7 +33,7 @@ const StoryDetails = ({ storyDetails }) => {
           <img
             alt="tania andrew"
             src={provider_image}
-            className="relative inline-block outline outline-offset-4 outline-blue-500 md:h-[50px] md:w-[50px]  rounded-full  object-cover object-center"
+            className="relative inline-block outline outline-offset-4 outline-blue-500 h-[50px] w-[50px]  rounded-full  object-cover object-center"
           />
           <div>
             <h1 className="text-xl font-semibold">{provider_name}</h1>

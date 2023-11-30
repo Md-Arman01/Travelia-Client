@@ -1,4 +1,3 @@
-
 import { Outlet } from "react-router-dom";
 import Container from "../../Component/Container";
 import TouristMenu from "./DashboardMenu/TouristMenu";
@@ -7,27 +6,21 @@ import AdminMenu from "./DashboardMenu/AdminMenu";
 import useUserInfo from "../../Hooks/useUserInfo";
 
 const Dashboard = () => {
-    const [userInfo] = useUserInfo()
-
+  const [userInfo] = useUserInfo();
 
   return (
     <div>
       <Container>
-        <div className="flex">
+        <div className="flex flex-col lg:flex-row">
           {/* dashboard menu */}
-          <div className="w-72 min-h-screen  -mb-20 bg-gray-700 flex flex-col items-center gap-3 px-5">
-            <h1 className="bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text text-5xl font-semibold font-Rancho mt-8 mb-3">Travelia</h1>
+          <div className="lg:w-72 lg:min-h-screen  lg:-mb-20 bg-gray-700 flex flex-col items-center gap-3 px-5 py-10 lg:py-0">
+            <h1 className="bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text text-5xl font-semibold font-Rancho mt-8 mb-3">
+              Travelia
+            </h1>
             <p className="border-b-2 border-white w-full"> </p>
-            {
-                userInfo?.role === 'Tourist' && <TouristMenu></TouristMenu>
-            }
-            {
-                userInfo?.role === 'Tour Guide' && <TourGuideMenu></TourGuideMenu>
-            }
-            {
-                userInfo?.role === 'Admin' && <AdminMenu></AdminMenu>
-            }
-
+            {userInfo?.role === "Tourist" && <TouristMenu></TouristMenu>}
+            {userInfo?.role === "Tour Guide" && <TourGuideMenu></TourGuideMenu>}
+            {userInfo?.role === "Admin" && <AdminMenu></AdminMenu>}
           </div>
           {/* dashboard child */}
           <div className="p-10 flex-1">

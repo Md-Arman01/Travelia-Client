@@ -10,22 +10,22 @@ const About = () => {
       <div>
         {/* banner */}
         <div
-          className="hero md:h-[500px] bg-fixed"
+          className="hero  h-[300px] md:h-[500px] bg-fixed"
           style={{
             backgroundImage: "url(https://i.ibb.co/TBQGHRd/Screenshot-198.png)",
           }}>
           <div className="hero-overlay bg-opacity-70"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md mb-10">
-              <h1 className="font-extrabold text-6xl">About Us</h1>
+              <h1 className="font-extrabold text-4xl lg:text-6xl">About Us</h1>
               <p className="md:w-48 border-4 border-orange-600 mt-1"></p>
             </div>
           </div>
         </div>
         {/* previous year */}
         <Container>
-          <div className="my-20">
-            <h1 className="text-center text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
+          <div className="my-10 md:my-20 px-5 lg:px-0">
+            <h1 className="text-center text-3xl md:text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
               Previous Years Development
             </h1>
             <p className="md:w-[550px] py-5 mx-auto text-center text-base text-gray-600 font-sans font-medium">
@@ -34,7 +34,7 @@ const About = () => {
               ultricies. Fusce luctus lobo.
             </p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-fit mx-auto gap-10 md:gap-20">
             <div className="flex items-center gap-3">
               <h1 className="text-7xl font-sans font-black bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text">
                 40K
@@ -71,8 +71,8 @@ const About = () => {
         </Container>
         {/* our Team */}
         <Container>
-          <div className="my-20">
-            <h1 className="text-center text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
+          <div className="my-10 md:my-20 px-5 lg:px-0">
+            <h1 className="text-center text-3xl md:text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
               Get to know our team
             </h1>
             <p className="md:w-[550px] py-5 mx-auto text-center text-base text-gray-600 font-sans font-medium">
@@ -80,7 +80,7 @@ const About = () => {
               tempor. Donec consectetur dape.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-5 lg:px-0">
             {/* 1 */}
             <div className="relative grid h-[32rem] w-full  flex-col items-end justify-center overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
               <div className="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-[url('https://i.ibb.co/0C0FTgY/Screenshot-202.png')] object-cover bg-cover bg-clip-border bg-center text-gray-700 shadow-none">

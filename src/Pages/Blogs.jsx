@@ -10,21 +10,21 @@ const Blogs = () => {
       </Helmet>
       {/* banner */}
       <div
-        className="hero md:h-[500px] bg-fixed"
+        className="hero h-[300px] md:h-[500px] bg-fixed"
         style={{
           backgroundImage: "url(https://i.ibb.co/bRD6KJk/Screenshot-221.png)",
         }}>
         <div className="hero-overlay bg-opacity-75"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md mb-10">
-            <h1 className="font-extrabold text-6xl">Blog's</h1>
+            <h1 className="font-extrabold text-4xl lg:text-6xl">Blog's</h1>
             <p className="md:w-48 border-4 border-orange-600 mt-1"></p>
           </div>
         </div>
       </div>
       {/* content */}
       <Container>
-        <div className="flex gap-10 mt-20">
+        <div className="flex flex-col lg:flex-row gap-10 mt-10 md:mt-20 px-5 lg:px-0">
           {/* left side */}
           <div>
             {/* 1st  */}
@@ -35,7 +35,7 @@ const Blogs = () => {
                 alt=""
               />
               <p className="text-sm font-semibold mt-2">November 29, 2023</p>
-              <h1 className="text-4xl font-semibold mt-5">
+              <h1 className="text-3xl md:text-4xl font-semibold mt-5">
                 Travelia provides good tour guide for traveling
               </h1>
               <p className="text-base text-gray-500 font-sans font-medium mt-3">
@@ -93,7 +93,7 @@ const Blogs = () => {
               </p>
             </div>
             {/* 3rd */}
-            <div className="flex items-center gap-5 mt-10">
+            <div className="flex flex-col-reverse lg:flex-row items-center gap-5 mt-10">
               <div className="h-full space-y-6 flex-1">
                 <h1 className="text-2xl font-semibold mt-10">
                   Pellentesque eu tincidunt aliquam
@@ -121,7 +121,7 @@ const Blogs = () => {
               </div>
               <div className="flex-1">
                 <img
-                  className="rounded-md h-[450px]"
+                  className="rounded-md object-cover h-[450px]"
                   src="https://i.ibb.co/RgmTMg6/Screenshot-226.png"
                   alt=""
                 />
@@ -170,7 +170,7 @@ const Blogs = () => {
             <h1 className="text-3xl font-semibold border-b-2 w-fit border-orange-500 my-8">
               Discount Offer
             </h1>
-            <div className="w-96 mt-5">
+            <div className=" lg:w-96 mt-5">
               <img src="https://i.ibb.co/GHGCLgT/Screenshot-227.png" alt="" />
               <div>
                 <h1 className="text-sm font-medium font-sans mt-2 text-orange-500">

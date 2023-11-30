@@ -10,7 +10,7 @@ const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_bb_API}`;
 
 const TourGuideProfile = () => {
   const [userInfo] = useUserInfo();
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   const {
     register,
@@ -30,27 +30,22 @@ const TourGuideProfile = () => {
     });
     const image = res?.data?.data?.display_url;
 
-    const updateInfo ={
-        user_name: data?.name,
-        user_image: image,
-        phone_number: data?.number,
-        education: data?.education,
-        skills: data?.skills,
-        work_experience: data?.work_experience
-    }
-    
-    axiosSecure.put(`/users/${userInfo?._id}`, updateInfo)
-    .then(res => {
-        console.log(res?.data)
-        if(res?.data?._id){
-            toast.success("Update Successfully!", { id: toastId });
-            reset()
-        }
-    })
+    const updateInfo = {
+      user_name: data?.name,
+      user_image: image,
+      phone_number: data?.number,
+      education: data?.education,
+      skills: data?.skills,
+      work_experience: data?.work_experience,
+    };
 
-
-
-
+    axiosSecure.put(`/users/${userInfo?._id}`, updateInfo).then((res) => {
+      console.log(res?.data);
+      if (res?.data?._id) {
+        toast.success("Update Successfully!", { id: toastId });
+        reset();
+      }
+    });
   };
 
   return (
@@ -58,10 +53,10 @@ const TourGuideProfile = () => {
       <Helmet>
         <title>Travelia | TourGuide | Profile</title>
       </Helmet>
-      <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
+      <h1 className="text-center mb-10 lg:my-10 text-3xl md:text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
         My Profile
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* profile */}
         <div className="relative flex flex-col text-gray-700 h-fit bg-white shadow-md  rounded-xl bg-clip-border">
           <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg rounded-xl bg-clip-border">

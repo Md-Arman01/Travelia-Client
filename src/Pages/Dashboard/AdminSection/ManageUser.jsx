@@ -41,11 +41,11 @@ const ManageUser = () => {
       <Helmet>
         <title>Travelia | Manage User</title>
       </Helmet>
-        <h1 className="text-center my-10 text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
+        <h1 className="text-center mb-10 md:my-10 text-3xl md:text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
           Manage User
         </h1>
       </div>
-      <div className="bg-[#F6F6F6] p-20 rounded-xl">
+      <div className="bg-[#F6F6F6] p-8 md:p-10 lg:p-20 rounded-xl">
         <div>
           <div className="flex justify-between">
             <h1 className="text-4xl  font-semibold">
