@@ -23,7 +23,7 @@ const CheckoutForm = ({ id }) => {
     },
   });
   const [bookingData] = bookingPackage || [];
-  const totalPrice = bookingData?.price || {};
+  const totalPrice = bookingData?.price || 0;
 
   useEffect(() => {
     totalPrice > 0 &&

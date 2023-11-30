@@ -6,10 +6,8 @@ import { useParams } from "react-router-dom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_SECRET_KEY);
 
-
 const Payment = () => {
-    const {id} = useParams()
-
+  const { id } = useParams();
 
   return (
     <div>
@@ -20,8 +18,8 @@ const Payment = () => {
           </h1>
         </div>
         <Elements stripe={stripePromise}>
-           <CheckoutForm id={id}></CheckoutForm>
-      </Elements>
+          <CheckoutForm id={id}></CheckoutForm>
+        </Elements>
       </Container>
     </div>
   );

@@ -20,7 +20,7 @@ const StoryDetails = ({ storyDetails }) => {
     story_image,
     tour_experience,
   } = storyDetails || {};
-  const shearURl = "https://book-finder-a4e89.web.app/";
+  const shearURl = "https://travelia-db9f7.web.app/";
 
   return (
     <div className="mb-10">

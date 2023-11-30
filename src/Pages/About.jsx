@@ -24,7 +24,7 @@ const About = () => {
         </div>
         {/* previous year */}
         <Container>
-          <div className="my-10">
+          <div className="my-20">
             <h1 className="text-center text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
               Previous Years Development
             </h1>
@@ -34,7 +34,7 @@ const About = () => {
               ultricies. Fusce luctus lobo.
             </p>
           </div>
-          <div className="flex items-center justify-between mb-20">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <h1 className="text-7xl font-sans font-black bg-gradient-to-t from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text">
                 40K
@@ -71,7 +71,7 @@ const About = () => {
         </Container>
         {/* our Team */}
         <Container>
-          <div className="my-10">
+          <div className="my-20">
             <h1 className="text-center text-5xl font-semibold font-Rancho border-y-4 mx-auto border-dashed w-fit py-3">
               Get to know our team
             </h1>
