@@ -1,3 +1,5 @@
+import { FaUserTie } from "react-icons/fa6";
+import { MdAssignment } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 const TourGuideMenu = () => {
@@ -10,7 +12,10 @@ const TourGuideMenu = () => {
             ? "text-xl font-semibold bg-gradient-to-r from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text"
             : "text-white text-xl font-semibold"
         }>
-        My Profile
+        <span className="flex items-center gap-3">
+          <FaUserTie className="text-orange-400" />
+          My Profile
+        </span>
       </NavLink>
       <NavLink
         to="/dashboard/tourGuideAssigned"
@@ -19,7 +24,10 @@ const TourGuideMenu = () => {
             ? "text-xl font-semibold bg-gradient-to-r from-[#FFA828] to-[#FF4804] text-transparent bg-clip-text"
             : "text-white text-xl font-semibold"
         }>
-        My  Assigned Tour
+        <span className="flex items-center gap-3">
+          <MdAssignment className="text-orange-400" />
+          My Assigned Tour
+        </span>
       </NavLink>
     </div>
   );
