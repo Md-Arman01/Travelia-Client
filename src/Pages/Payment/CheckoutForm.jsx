@@ -92,7 +92,7 @@ const CheckoutForm = ({ id }) => {
 
   return (
     <div className="flex justify-center mt-32">
-      <form onSubmit={handleSubmit} className="w-[500px]">
+      <form onSubmit={handleSubmit} className="w-full md:w-[700px] bg-slate-800 py-10 md:py-20 px-10 md:px-20 rounded-xl">
         <CardElement
           options={{
             style: {
