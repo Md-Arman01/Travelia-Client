@@ -9,7 +9,7 @@ const TouristStoryCard = ({ story }) => {
   };
 
   return (
-    <div>
+    <div className="hover:scale-95 duration-500">
       <Link to={`/storyDetails/${_id}`}>
         <div className="relative grid h-[350px] w-full flex-col items-end justify-center overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
           <div

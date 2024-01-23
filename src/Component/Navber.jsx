@@ -2,9 +2,9 @@ import logo from "../../public/Tourist Guide Logo.png";
 import Container from "./Container";
 import { FiMenu } from "react-icons/fi";
 import MenuItems from "./MenuItems";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 import useAuth from "../Hooks/useAuth";
 import { Link, NavLink } from "react-router-dom";
-import { FaArrowRightToBracket } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import useUserInfo from "../Hooks/useUserInfo";
 
@@ -44,7 +44,7 @@ const Navber = () => {
                 {menuItems}
               </ul>
             </div>
-            <Link to='/'>
+            <Link to="/">
               <div className="hover:cursor-pointer flex flex-col items-center">
                 <img className="w-16" src={logo} alt="" />
                 <h1 className="text-2xl font-Rancho font-semibold -mt-3">
@@ -64,7 +64,7 @@ const Navber = () => {
               <div>
                 <div className="dropdown dropdown-end">
                   <label tabIndex={0}>
-                    <div className="avatar online">
+                    <div className="avatar rounded-full hover:cursor-pointer">
                       <div className="w-12 rounded-full">
                         <img src={photoURL} />
                       </div>

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
-    GoogleAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -17,7 +17,7 @@ export const AuthContext = createContext();
 const Authprovider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -27,15 +27,14 @@ const Authprovider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-  const googleLogin = ()=>{
-    setLoading(true)
-    return signInWithPopup(auth, provider)
-  }
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
   const logoutUser = () => {
     setLoading(true);
     return signOut(auth);
   };
-
 
   const authInfo = {
     loading,
@@ -50,22 +49,18 @@ const Authprovider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
-      if(user){
-        const userEmail = {email: user?.email}
-        axiosPublic.post('/jwt', userEmail)
-        .then(res => {
-          if(res?.data?.token){
-            localStorage.setItem('access-token', res?.data?.token)
+      if (user) {
+        const userEmail = { email: user?.email };
+        axiosPublic.post("/jwt", userEmail).then((res) => {
+          if (res?.data?.token) {
+            localStorage.setItem("access-token", res?.data?.token);
           }
-        })
-      }else{
-        localStorage.removeItem('access-token')
+        });
+      } else {
+        localStorage.removeItem("access-token");
       }
-      
-      
-      
-      
-      setLoading(false)
+
+      setLoading(false);
     });
     return () => {
       unsubscribe();
